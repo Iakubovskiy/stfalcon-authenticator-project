@@ -28,7 +28,9 @@
                     </button>
             {% endif %}
         </div>
-
+        <div>
+            Останній вхід {{ app.user.lastLogin ? app.user.lastLogin|date('Y-m-d H:i:s', 'Europe/Kiev') : 'No last login' }}
+        </div>
         <a href="{{ path('app_logout') }}" class="btn btn-danger w-auto mt-4">Logout</a>
 
         <div class="modal fade" id="disable2FAModal" tabindex="-1" aria-labelledby="disable2FAModalLabel" aria-hidden="true">

@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfigurationInterface;
+use DateTime;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -46,6 +47,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $secretKey;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private DateTime $lastLogin;
 
     public function getId(): ?Uuid
     {
@@ -146,5 +150,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
         return new TotpConfiguration($this->secretKey, TotpConfiguration::ALGORITHM_SHA1, 30, 6);
+    }
+
+    public function getLastLogin(): ?DateTime
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(DateTime $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
+        return $this;
     }
 }

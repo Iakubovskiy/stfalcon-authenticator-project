@@ -11,6 +11,7 @@ use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInte
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
+use DateTime;
 
 readonly class UserService
 {
@@ -69,7 +70,6 @@ readonly class UserService
     {
         $user = $this->getUserById($userId);
         $isCorrect = $this->totpAuthenticator->checkCode($user, $totp);
-        dd($isCorrect);
         return $isCorrect;
     }
 
@@ -102,5 +102,15 @@ readonly class UserService
     {
         $user = $this->getUserById($userId);
         return $this->totpAuthenticator->getQRContent($user);
+    }
+
+    public function updateLastLogin(Uuid $userId): User
+    {
+        $user = $this->getUserById($userId);
+        $user->setLastLogin(new DateTime());
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
     }
 }

@@ -19,6 +19,15 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    App\Subscribers\TwoFactorRateLimitSubscriber:
+        arguments:
+            $rateLimiterFactory: '@limiter.two_factor_login'
+        tags: [ 'kernel.event_subscriber' ]
+    
+    App\Subscribers\LoginSubscriber:
+        arguments:
+            $userService: '@App\Services\UserService'
+        tags: [ 'kernel.event_subscriber' ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
