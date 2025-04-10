@@ -7,6 +7,7 @@ use App\DTO\RegisterDto;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
@@ -18,6 +19,7 @@ readonly class UserService
         private UserRepository $userRepository,
         private UserPasswordHasherInterface $passwordHarsher,
         private EntityManagerInterface $em,
+        private TotpAuthenticatorInterface $totpAuthenticator
     )
     {}
 
@@ -48,4 +50,28 @@ readonly class UserService
     {
         return $this->userRepository->find($userId);
     }
+
+    public function createSecretForUser(Uuid $userId): User
+    {
+        $user = $this->getUserById($userId);
+        $user->setSecretKey($this->totpAuthenticator->generateSecret());
+        $this->em->persist($user);
+        $this->em->flush();
+        return $user;
+    }
+
+    public function getUserSecretKey(Uuid $userId): string
+    {
+        $user = $this->getUserById($userId);
+        return $user->getSecretKey();
+    }
+
+    public function verifyTotp(Uuid $userId, string $totp): bool
+    {
+        $user = $this->getUserById($userId);
+        $isCorrect = $this->totpAuthenticator->checkCode($user, $totp);
+        dd($isCorrect);
+        return $isCorrect;
+    }
+    //$qrCodeContent = $container->get("scheb_two_factor.security.totp_authenticator")->getQRContent($user);
 }

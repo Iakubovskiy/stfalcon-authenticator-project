@@ -14,8 +14,12 @@
         "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.3",
         "egulias/email-validator": "^4.0",
+        "endroid/qr-code": "^6.0",
         "nelmio/api-doc-bundle": "^5.0",
         "runtime/frankenphp-symfony": "^0.2.0",
+        "scheb/2fa-bundle": "^7.7",
+        "scheb/2fa-totp": "^7.7",
+        "spomky-labs/otphp": "^11.3",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
         "symfony/flex": "^2",
@@ -80,6 +84,8 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.62"
+        "symfony/maker-bundle": "^1.62",
+        "symfony/stopwatch": "7.2.*",
+        "symfony/web-profiler-bundle": "7.2.*"
     }
 }

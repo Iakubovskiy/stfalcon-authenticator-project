@@ -5,20 +5,22 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
+use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
+use Scheb\TwoFactorBundle\Model\Totp\TotpConfigurationInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
     public function __construct()
     {
         $this->roles = ['ROLE_USER'];
-        $this->secretKey = '';
     }
 
     #[ORM\Id]
@@ -42,11 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column]
-    private ?string $secretKey = null;
-
-    #[ORM\Column]
-    private bool $twoFactorAuthenticationEnabled = false;
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $secretKey;
 
     public function getId(): ?Uuid
     {
@@ -134,14 +133,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTwoFactorAuthenticationEnabled(): ?bool
+    public function isTotpAuthenticationEnabled(): bool
     {
-        return $this->twoFactorAuthenticationEnabled;
+        return (bool)$this->secretKey;
     }
 
-    public function setTwoFactorAuthenticationEnabled(bool $twoFactorAuthenticationEnabled): self
+    public function getTotpAuthenticationUsername(): string
     {
-        $this->twoFactorAuthenticationEnabled = $twoFactorAuthenticationEnabled;
-        return $this;
+        return $this->email;
+    }
+
+    public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
+    {
+        return new TotpConfiguration($this->secretKey, TotpConfiguration::ALGORITHM_SHA1, 30, 6);
     }
 }

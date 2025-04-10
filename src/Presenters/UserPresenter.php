@@ -18,4 +18,9 @@ final readonly class UserPresenter
           'roles' => $user->getRoles(),
         ];
     }
+
+    public function presentList(array $users): array
+    {
+        return array_map(fn ($user) => $this->present($user),$users );
+    }
 }
