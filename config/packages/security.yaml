@@ -17,6 +17,15 @@ security:
         api_doc:
             pattern: ^/api/doc
             security: false
+        test:
+            pattern: '/api/'
+            security: false
+        qr:
+            pattern: '/qr-secret/'
+            security: false
+        register:
+            pattern: '/register'
+            security: false
         main:
             remember_me:
                 secret: '%kernel.secret%'

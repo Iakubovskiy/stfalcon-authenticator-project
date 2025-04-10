@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class AuthPageController extends AbstractController
+class RegisterController extends AbstractController
 {
 
     public function __construct(private readonly UserService $userService)
@@ -29,7 +29,7 @@ class AuthPageController extends AbstractController
     }
 
     #[Route('/register/process', name: 'register_process', methods: ['POST'])]
-    public function registerProcess(Request $request, HttpClientInterface $httpClient): Response
+    public function registerProcess(Request $request): Response
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');

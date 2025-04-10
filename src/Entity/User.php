@@ -127,7 +127,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         return $this->secretKey;
     }
 
-    public function setSecretKey(string $secretKey): self
+    public function setSecretKey(?string $secretKey): self
     {
         $this->secretKey = $secretKey;
         return $this;

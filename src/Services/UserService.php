@@ -19,7 +19,7 @@ readonly class UserService
         private UserRepository $userRepository,
         private UserPasswordHasherInterface $passwordHarsher,
         private EntityManagerInterface $em,
-        private TotpAuthenticatorInterface $totpAuthenticator
+        private TotpAuthenticatorInterface $totpAuthenticator,
     )
     {}
 
@@ -33,7 +33,6 @@ readonly class UserService
         $user->setEmail($registerDto->email);
         $hashed_password = $this->passwordHarsher->hashPassword($user, $registerDto->password);
         $user->setPassword($hashed_password);
-        $user->setTwoFactorAuthenticationEnabled(false);
 
         $this->em->persist($user);
         $this->em->flush();
@@ -73,5 +72,35 @@ readonly class UserService
         dd($isCorrect);
         return $isCorrect;
     }
-    //$qrCodeContent = $container->get("scheb_two_factor.security.totp_authenticator")->getQRContent($user);
+
+    public function disableTwoFactorAuthentication(Uuid $userId, string $password): bool
+    {
+        $user = $this->getUserById($userId);
+        $isValidPassword = $this->passwordHarsher->isPasswordValid($user, $password);
+        if(!$isValidPassword) {
+            return false;
+        }
+        $user->setSecretKey(null);
+        $this->em->persist($user);
+        $this->em->flush();
+        return true;
+    }
+    public function enableTwoFactorAuthentication(Uuid $userId, string $password): bool
+    {
+        $user = $this->getUserById($userId);
+        $isValidPassword = $this->passwordHarsher->isPasswordValid($user, $password);
+        if(!$isValidPassword) {
+            return false;
+        }
+        $user->setSecretKey($this->totpAuthenticator->generateSecret());
+        $this->em->persist($user);
+        $this->em->flush();
+        return true;
+    }
+
+    public function getUserQrCodeData(Uuid $userId): string
+    {
+        $user = $this->getUserById($userId);
+        return $this->totpAuthenticator->getQRContent($user);
+    }
 }
