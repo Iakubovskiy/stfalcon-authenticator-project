@@ -51,15 +51,6 @@ readonly class UserService
         return $this->userRepository->find($userId);
     }
 
-    public function createSecretForUser(Uuid $userId): User
-    {
-        $user = $this->getUserById($userId);
-        $user->setSecretKey($this->totpAuthenticator->generateSecret());
-        $this->em->persist($user);
-        $this->em->flush();
-        return $user;
-    }
-
     public function getUserSecretKey(Uuid $userId): string
     {
         $user = $this->getUserById($userId);
@@ -92,7 +83,7 @@ readonly class UserService
         if(!$isValidPassword) {
             return false;
         }
-        $user->setSecretKey($this->totpAuthenticator->generateSecret());
+        $user->setSecretKey($user->encryptSecret($this->totpAuthenticator->generateSecret()));
         $this->em->persist($user);
         $this->em->flush();
         return true;

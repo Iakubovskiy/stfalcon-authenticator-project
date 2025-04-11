@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Types\UuidType;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
@@ -21,6 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 {
     public function __construct()
     {
+
         $this->roles = ['ROLE_USER'];
     }
 
@@ -149,7 +151,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
-        return new TotpConfiguration($this->secretKey, TotpConfiguration::ALGORITHM_SHA1, 30, 6);
+        $secret = $this->decryptSecret($this->secretKey);
+        return new TotpConfiguration(
+            $secret,
+            TotpConfiguration::ALGORITHM_SHA1,
+            30,
+            6
+        );
     }
 
     public function getLastLogin(): ?DateTime
@@ -161,5 +169,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     {
         $this->lastLogin = $lastLogin;
         return $this;
+    }
+
+    public function encryptSecret(string $data): string
+    {
+        $nonce = random_bytes(SODIUM_CRYPTO_SECRETBOX_NONCEBYTES);
+        $rawKey = $_ENV['ENCRYPTION_KEY'];
+        $key = sodium_crypto_generichash(
+            $rawKey,
+            '',
+            SODIUM_CRYPTO_SECRETBOX_KEYBYTES
+        );
+        $cipher = sodium_crypto_secretbox(
+            $data,
+            $nonce,
+            $key
+        );
+        return base64_encode($nonce.$cipher);
+    }
+
+    public function decryptSecret(string $data): string
+    {
+        $decodedData = base64_decode($data);
+        $nonce = mb_substr($decodedData, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
+        $cipher = mb_substr($decodedData, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
+        $rawKey = $_ENV['ENCRYPTION_KEY'];
+        $key = sodium_crypto_generichash(
+            $rawKey,
+            '',
+            SODIUM_CRYPTO_SECRETBOX_KEYBYTES
+        );
+        $secret = sodium_crypto_secretbox_open(
+            $cipher,
+            $nonce,
+            $key
+        );
+        $newValue = $secret.'';
+        return $newValue;
     }
 }
