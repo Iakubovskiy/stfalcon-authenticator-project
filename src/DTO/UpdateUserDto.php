@@ -6,7 +6,7 @@ namespace App\DTO;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-readonly class RegisterDto
+class UpdateUserDto
 {
     public function __construct(
         #[Assert\NotBlank]
@@ -15,8 +15,8 @@ readonly class RegisterDto
             mode: Assert\Email::VALIDATION_MODE_STRICT
         )]
         public string $email,
-        #[Assert\NotBlank]
-        public string $password,
+        public ?string $password,
+        public ?string $photoUrl
     ) {
     }
 }

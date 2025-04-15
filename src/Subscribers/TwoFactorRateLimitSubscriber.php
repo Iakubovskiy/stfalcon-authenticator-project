@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace App\Subscribers;
 
@@ -11,8 +11,10 @@ use Symfony\Component\RateLimiter\RateLimiterFactory;
 
 readonly class TwoFactorRateLimitSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private RateLimiterFactory $rateLimiterFactory)
-    {}
+    public function __construct(
+        private RateLimiterFactory $twoFactorLoginLimiter
+    ) {
+    }
 
     public static function getSubscribedEvents(): array
     {
@@ -24,14 +26,15 @@ readonly class TwoFactorRateLimitSubscriber implements EventSubscriberInterface
     public function onRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
-        if ($request->getPathInfo() !== '/2fa_check' || !$request->isMethod('POST')) {
+        if ($request->getPathInfo() !== '/2fa_check' || ! $request->isMethod('POST')) {
             return;
         }
-        $ip = $request->getClientIp() ?? 'unknown';
-        $limiter = $this->rateLimiterFactory->create($ip);
 
-        $limit = $limiter->consume(1);
-        if (!$limit->isAccepted()) {
+        $ip = $request->getClientIp() ?? 'unknown';
+        $limiter = $this->twoFactorLoginLimiter->create($ip);
+
+        $rateLimit = $limiter->consume(1);
+        if (! $rateLimit->isAccepted()) {
             throw new TooManyRequestsHttpException(null, 'Забагато спроб. Спробуйте пізніше.');
         }
     }

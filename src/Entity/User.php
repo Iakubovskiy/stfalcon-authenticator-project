@@ -1,64 +1,64 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
+use Scheb\TwoFactorBundle\Model\Totp\TotpConfigurationInterface;
 use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Types\UuidType;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
-use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
-use Scheb\TwoFactorBundle\Model\Totp\TotpConfigurationInterface;
-use DateTime;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
-    public function __construct()
-    {
-
-        $this->roles = ['ROLE_USER'];
-    }
-
     #[ORM\Id]
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    protected ?Uuid $id = null;
+    protected Uuid $id;
 
     #[ORM\Column(length: 180)]
-    private ?string $email = null;
+    /**
+     * @var non-empty-string
+     */
+    private string $email;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ['ROLE_USER'];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
-    private ?string $password = null;
+    private string $password;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(nullable: true)]
     private ?string $secretKey;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
     private DateTime $lastLogin;
 
-    public function getId(): ?Uuid
+    #[ORM\Column(nullable: true)]
+    private ?string $photoUrl = null;
+
+    public function getId(): Uuid
     {
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -77,7 +77,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        assert(trim($this->email) !== '');
+        return $this->email !== '' && $this->email !== '0' ? $this->email : 'not.valid@email.com';
     }
 
     /**
@@ -91,7 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_values(array_unique($roles));
     }
 
     /**
@@ -141,7 +142,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function isTotpAuthenticationEnabled(): bool
     {
-        return (bool)$this->secretKey;
+        return (bool) $this->secretKey;
     }
 
     public function getTotpAuthenticationUsername(): string
@@ -151,9 +152,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
-        $secret = $this->decryptSecret($this->secretKey);
         return new TotpConfiguration(
-            $secret,
+            $this->secretKey ?? throw new \RuntimeException('Secret key is not configured'),
             TotpConfiguration::ALGORITHM_SHA1,
             30,
             6
@@ -171,40 +171,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         return $this;
     }
 
-    public function encryptSecret(string $data): string
+    public function getPhotoUrl(): ?string
     {
-        $nonce = random_bytes(SODIUM_CRYPTO_SECRETBOX_NONCEBYTES);
-        $rawKey = $_ENV['ENCRYPTION_KEY'];
-        $key = sodium_crypto_generichash(
-            $rawKey,
-            '',
-            SODIUM_CRYPTO_SECRETBOX_KEYBYTES
-        );
-        $cipher = sodium_crypto_secretbox(
-            $data,
-            $nonce,
-            $key
-        );
-        return base64_encode($nonce.$cipher);
+        return $this->photoUrl;
     }
 
-    public function decryptSecret(string $data): string
+    public function setPhotoUrl(?string $photoUrl): self
     {
-        $decodedData = base64_decode($data);
-        $nonce = mb_substr($decodedData, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
-        $cipher = mb_substr($decodedData, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
-        $rawKey = $_ENV['ENCRYPTION_KEY'];
-        $key = sodium_crypto_generichash(
-            $rawKey,
-            '',
-            SODIUM_CRYPTO_SECRETBOX_KEYBYTES
-        );
-        $secret = sodium_crypto_secretbox_open(
-            $cipher,
-            $nonce,
-            $key
-        );
-        $newValue = $secret.'';
-        return $newValue;
+        $this->photoUrl = $photoUrl;
+        return $this;
     }
 }

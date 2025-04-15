@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -6,19 +7,16 @@ namespace App\Controller;
 use App\DTO\RegisterDto;
 use App\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class RegisterController extends AbstractController
 {
-
-    public function __construct(private readonly UserService $userService)
-    {
+    public function __construct(
+        private readonly UserService $userService
+    ) {
 
     }
 
@@ -31,7 +29,9 @@ class RegisterController extends AbstractController
     #[Route('/register/process', name: 'register_process', methods: ['POST'])]
     public function registerProcess(Request $request): Response
     {
+        /** @var string $email */
         $email = $request->request->get('email');
+        /** @var string $password */
         $password = $request->request->get('password');
         $passwordConfirm = $request->request->get('password_confirm');
 
@@ -39,6 +39,7 @@ class RegisterController extends AbstractController
             $this->addFlash('error', 'Паролі не збігаються.');
             return $this->redirectToRoute('register');
         }
+
         $registerDTO = new RegisterDTO($email, $password);
         try {
             $this->userService->register($registerDTO);
@@ -48,7 +49,7 @@ class RegisterController extends AbstractController
 
         } catch (ClientExceptionInterface $e) {
             $error = json_decode($e->getResponse()->getContent(false), true);
-            $message = $error['message'] ?? 'Помилка під час реєстрації';
+            $message = is_array($error) && isset($error['message']) ? $error['message'] : 'Помилка під час реєстрації';
             $this->addFlash('error', $message);
             return $this->redirectToRoute('register');
         } catch (\Exception $e) {
@@ -56,5 +57,4 @@ class RegisterController extends AbstractController
             return $this->redirectToRoute('register');
         }
     }
-
 }

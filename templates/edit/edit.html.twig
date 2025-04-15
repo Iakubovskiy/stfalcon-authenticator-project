@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редагування користувача{% endblock %}
+
+{% block body %}
+    <h1>Редагування користувача</h1>
+    <img src="{{ asset('uploads/' ~ user.photoUrl) }}"
+         alt="Фото профілю"
+         style="max-width: 700px; height: auto; border-radius: 15px; margin-top: 10px;">
+    <form action="{{ path('editUser', { id: user.id }) }}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+
+        <div>
+            <label for="password">Новий пароль</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div>
+            <label for="profile_picture">Фото профілю:</label>
+            <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-success w-auto mt-4">Зберегти</button>
+        <a class="btn btn-secondary w-auto mt-4" href="{{path ('main') }}">Повернутися</a>
+    </form>
+{% endblock %}

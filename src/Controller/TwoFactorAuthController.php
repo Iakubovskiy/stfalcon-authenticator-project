@@ -1,29 +1,31 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace App\Controller;
 
 use App\Services\UserService;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Label\Font\OpenSans;
+use Endroid\QrCode\Label\LabelAlignment;
+use Endroid\QrCode\RoundBlockSizeMode;
+use Endroid\QrCode\Writer\PngWriter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
-use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\Label\LabelAlignment;
-use Endroid\QrCode\Label\Font\OpenSans;
-use Endroid\QrCode\RoundBlockSizeMode;
-use Endroid\QrCode\Writer\PngWriter;
 
 class TwoFactorAuthController extends AbstractController
 {
-    public function __construct(private readonly UserService $userService)
-    {
+    public function __construct(
+        private readonly UserService $userService
+    ) {
 
     }
+
     #[Route('/2fa', name: '2fa_login')]
     public function twoFactor(): Response
     {
@@ -33,28 +35,36 @@ class TwoFactorAuthController extends AbstractController
     #[Route('/disable-2fa', name: 'disable_2fa', methods: ['POST'])]
     public function disableTwoFactor(Request $request): Response
     {
+        /** @var string $password */
         $password = $request->request->get('password');
-        $id = Uuid::fromString($request->request->get('id'));
-        $success = $this->userService->disableTwoFactorAuthentication($id, $password);
+        /** @var string $id */
+        $id = $request->request->get('id');
+        $uuid = Uuid::fromString($id);
+        $success = $this->userService->disableTwoFactorAuthentication($uuid, $password);
         if ($success) {
             $this->addFlash('warning', 'Двофакторна автентифікація вимкнена.');
         } else {
             $this->addFlash('danger', 'Неправильний пароль. Спробуйте ще раз.');
         }
+
         return $this->redirectToRoute('main');
     }
 
     #[Route('/enable-2fa', name: 'enable_2fa', methods: ['POST'])]
     public function enableTwoFactor(Request $request): Response
     {
+        /** @var string $password */
         $password = $request->request->get('password');
-        $id = Uuid::fromString($request->request->get('id'));
-        $success = $this->userService->enableTwoFactorAuthentication($id, $password);
+        /** @var string $id */
+        $id = $request->request->get('id');
+        $uuid = Uuid::fromString($id);
+        $success = $this->userService->enableTwoFactorAuthentication($uuid, $password);
         if ($success) {
             $this->addFlash('success', 'Двофакторна автентифікація ввімкнена.');
         } else {
             $this->addFlash('danger', 'Неправильний пароль. Спробуйте ще раз.');
         }
+
         return $this->redirectToRoute('main');
     }
 
@@ -80,7 +90,7 @@ class TwoFactorAuthController extends AbstractController
         $result = $builder->build();
         return new Response(
             $result->getString(),
-            200,
+            \Symfony\Component\HttpFoundation\Response::HTTP_OK,
             [
                 'content-type' => 'image/png',
                 'Content-Disposition' => 'inline; filename="qr-code.png"',
