@@ -91,6 +91,7 @@
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "*",
         "rector/rector": "^2.0",
         "symfony/maker-bundle": "^1.62",
         "symfony/stopwatch": "7.2.*",

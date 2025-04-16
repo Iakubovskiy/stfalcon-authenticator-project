@@ -85,10 +85,6 @@ readonly class UserService
     public function getUserQrCodeData(Uuid $uuid): string
     {
         $user = $this->getUserById($uuid);
-        if ($user->getSecretKey() !== null) {
-            $user->setSecretKey($this->encryptionService->decryptSecret($user->getSecretKey()));
-        }
-
         return $this->totpAuthenticator->getQRContent($user);
     }
 

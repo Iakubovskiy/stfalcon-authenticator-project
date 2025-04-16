@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Services\EncryptionService;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
@@ -152,8 +153,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
+        /** @var string $key */
+        $key = $_ENV['ENCRYPTION_KEY'];
+        $encryptionService = new EncryptionService($key);
         return new TotpConfiguration(
-            $this->secretKey ?? throw new \RuntimeException('Secret key is not configured'),
+            $encryptionService->decryptSecret($this->secretKey ?? throw new \RuntimeException('Secret key is not configured')),
             TotpConfiguration::ALGORITHM_SHA1,
             30,
             6
