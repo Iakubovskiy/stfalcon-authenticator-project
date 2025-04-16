@@ -17,11 +17,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\HttpFoundation\UriSigner;
 
 class TwoFactorAuthController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService
+        private readonly UserService $userService,
+        private readonly UriSigner $uriSigner,
     ) {
 
     }
@@ -69,8 +71,17 @@ class TwoFactorAuthController extends AbstractController
     }
 
     #[Route('/qr-secret/{id}', name: 'qr_secret', methods: ['GET'])]
-    public function qrSecret(Uuid $id): Response
+    public function qrSecret(Uuid $id, Request $request): Response
     {
+        $qs = ($qs = $request->server->get('QUERY_STRING')) ? '?'.$qs : '';
+        $url = parse_url($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo().$qs);
+        $urlPath = $url['path'].'?'.$url['query'];
+        $isValid = $this->uriSigner->check($urlPath);
+        if (!$isValid) {
+            return new Response(
+                status:403
+            );
+        }
         $builder = new Builder(
             writer: new PngWriter(),
             writerOptions: [],

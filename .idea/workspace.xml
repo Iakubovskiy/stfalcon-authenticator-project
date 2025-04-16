@@ -4,24 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="unit validation test">
-      <change afterPath="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ValidateEmailTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="integration validation test and application test for api&#10;also quality tools applied">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecs.php" beforeDir="false" afterPath="$PROJECT_DIR$/ecs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpstan.dist.neon" beforeDir="false" afterPath="$PROJECT_DIR$/phpstan.dist.neon" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rector.php" beforeDir="false" afterPath="$PROJECT_DIR$/rector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +191,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "Symfony2.SettingsForm",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -333,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744806940269</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="integration validation test and application test for api&#10;also quality tools applied">
+      <option name="closed" value="true" />
+      <created>1744815401119</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744815401119</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,6 +353,18 @@
     <MESSAGE value="secret encryption" />
     <MESSAGE value="standards met and changes made" />
     <MESSAGE value="unit validation test" />
-    <option name="LAST_COMMIT_MESSAGE" value="unit validation test" />
+    <MESSAGE value="integration validation test and application test for api&#10;also quality tools applied" />
+    <option name="LAST_COMMIT_MESSAGE" value="integration validation test and application test for api&#10;also quality tools applied" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/vendor/symfony/http-foundation/UriSigner.php</url>
+          <line>81</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
