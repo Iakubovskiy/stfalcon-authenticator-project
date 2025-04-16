@@ -4,20 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="standards met and changes made">
-      <change afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phpunit.dist.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="unit validation test">
+      <change afterPath="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ValidateEmailTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/EmailValidationTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecs.php" beforeDir="false" afterPath="$PROJECT_DIR$/ecs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpstan.dist.neon" beforeDir="false" afterPath="$PROJECT_DIR$/phpstan.dist.neon" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rector.php" beforeDir="false" afterPath="$PROJECT_DIR$/rector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,6 +173,11 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -221,7 +230,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.EmailValidationTest.testNotValidEmailValidation (1)">
+  <component name="RunManager" selected="PHPUnit.TestUpdateEndpointTest.testEmailUpdate">
     <configuration name="EmailValidationTest.testNotValidEmailValidation (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="tests\EmailValidationTest" file="$PROJECT_DIR$/tests/EmailValidationTest.php" method="testNotValidEmailValidation" scope="Method" />
       <method v="2" />
@@ -230,8 +239,18 @@
       <TestRunner class="App\Tests\EmailValidationTest" file="$PROJECT_DIR$/src/tests/EmailValidationTest.php" method="testNotValidEmailValidation" scope="Method" />
       <method v="2" />
     </configuration>
+    <configuration name="TestUpdateEndpointTest.testEmailUpdate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\TestUpdateEndpointTest" file="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" method="testEmailUpdate" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUpdateEndpointTest.testSomething" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\TestUpdateEndpointTest" file="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" method="testSomething" scope="Method" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.TestUpdateEndpointTest.testEmailUpdate" />
+        <item itemvalue="PHPUnit.TestUpdateEndpointTest.testSomething" />
         <item itemvalue="PHPUnit.EmailValidationTest.testNotValidEmailValidation (1)" />
         <item itemvalue="PHPUnit.EmailValidationTest.testNotValidEmailValidation" />
       </list>
@@ -306,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744746166311</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="unit validation test">
+      <option name="closed" value="true" />
+      <created>1744806940269</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744806940269</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +357,7 @@
     <MESSAGE value="last login + rate limit" />
     <MESSAGE value="secret encryption" />
     <MESSAGE value="standards met and changes made" />
-    <option name="LAST_COMMIT_MESSAGE" value="standards met and changes made" />
+    <MESSAGE value="unit validation test" />
+    <option name="LAST_COMMIT_MESSAGE" value="unit validation test" />
   </component>
 </project>

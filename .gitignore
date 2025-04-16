@@ -1,5 +1,6 @@
 ###> symfony/framework-bundle ###
 /.env
+/.env.test
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -18,3 +19,8 @@ phpstan.neon
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

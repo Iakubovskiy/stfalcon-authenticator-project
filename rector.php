@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 
@@ -11,11 +12,13 @@ return RectorConfig::configure()
         __DIR__ . '/config',
         __DIR__ . '/public',
         __DIR__ . '/src',
+        __DIR__ . '/tests',
     ])
     ->withSkip(
      [
          RenameParamToMatchTypeRector::class,
          RenamePropertyToMatchTypeRector::class,
+         RenameVariableToMatchMethodCallReturnTypeRector::class
      ]
     )
     ->withPreparedSets(

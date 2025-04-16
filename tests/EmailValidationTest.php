@@ -4,26 +4,23 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\DTO\RegisterDto;
 use App\DTO\UpdateUserDto;
 use App\Repository\UserRepository;
 use App\Services\EncryptionService;
 use App\Services\UserService;
 use Doctrine\ORM\EntityManagerInterface;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Validation;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class EmailValidationTest extends TestCase
 {
-    private readonly UserService $userService;
-    private readonly Uuid $id;
-    public function setUp() : void
+    private UserService $userService;
+
+    protected function setUp(): void
     {
         $mockUserRepository = $this->createMock(UserRepository::class);
         $mockPasswordHasher = $this->createMock(UserPasswordHasherInterface::class);
@@ -42,8 +39,8 @@ final class EmailValidationTest extends TestCase
             $mockEncryptionService,
             $mockValidator,
         );
-        $this->id = Uuid::fromString('0196158b-a5bf-7f06-96be-ec13aa7f6902');
     }
+
     public function testNotValidEmailValidation(): void
     {
         $this->expectException(RuntimeException::class);
@@ -55,6 +52,6 @@ final class EmailValidationTest extends TestCase
             null,
         );
 
-        $this->userService->updateUser($this->id, $updateUserDto);
+        $this->userService->updateUser(Uuid::fromString('0196158b-a5bf-7f06-96be-ec13aa7f6902'), $updateUserDto);
     }
 }

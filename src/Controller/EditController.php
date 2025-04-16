@@ -36,7 +36,7 @@ class EditController extends AbstractController
         $email = $request->request->get('email');
         $passwordRaw = $request->request->get('password');
         /** @var ?string $password */
-        $password = is_string($passwordRaw) ?: null;
+        $password = is_string($passwordRaw) ? $passwordRaw : null;
         $profilePictureFile = $request->files->get('profile_picture');
         $filePath = '';
         if ($profilePictureFile instanceof UploadedFile) {
