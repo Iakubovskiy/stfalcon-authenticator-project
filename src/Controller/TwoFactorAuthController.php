@@ -15,9 +15,9 @@ use Endroid\QrCode\Writer\PngWriter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
-use Symfony\Component\HttpFoundation\UriSigner;
 
 class TwoFactorAuthController extends AbstractController
 {
@@ -73,15 +73,25 @@ class TwoFactorAuthController extends AbstractController
     #[Route('/qr-secret/{id}', name: 'qr_secret', methods: ['GET'])]
     public function qrSecret(Uuid $id, Request $request): Response
     {
-        $qs = ($qs = $request->server->get('QUERY_STRING')) ? '?'.$qs : '';
-        $url = parse_url($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo().$qs);
-        $urlPath = $url['path'].'?'.$url['query'];
+        /** @var ?string $queryString */
+        $queryString = $request->server->get('QUERY_STRING');
+        $qs = ($queryString !== null) ? '?' . $queryString : '';
+        $url = parse_url($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $request->getPathInfo() . $qs);
+        if ($url === false) {
+            throw new \InvalidArgumentException('Malformed URL');
+        }
+
+        $path = $url['path'] ?? '';
+        $query = isset($url['query']) ? '?' . $url['query'] : '';
+
+        $urlPath = $path . $query;
         $isValid = $this->uriSigner->check($urlPath);
-        if (!$isValid) {
+        if (! $isValid) {
             return new Response(
-                status:403
+                status: 403
             );
         }
+
         $builder = new Builder(
             writer: new PngWriter(),
             writerOptions: [],

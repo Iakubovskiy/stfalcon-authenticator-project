@@ -12,11 +12,12 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-
 class LoginController extends AbstractController
 {
-    public function __construct(private readonly UriSigner $uriSigner, private UrlGeneratorInterface $urlGenerator)
-    {
+    public function __construct(
+        private readonly UriSigner $uriSigner,
+        private UrlGeneratorInterface $urlGenerator
+    ) {
 
     }
 
@@ -41,10 +42,10 @@ class LoginController extends AbstractController
         $qrCodeUrl = $this->urlGenerator->generate(
             'qr_secret',
             [
-                'id' => '0196158b-a5bf-7f06-96be-ec13aa7f6902'
+                'id' => '0196158b-a5bf-7f06-96be-ec13aa7f6902',
             ],
         );
-//        dd($qrCodeUrl);
+        //        dd($qrCodeUrl);
         $signedUrl = $this->uriSigner->sign($qrCodeUrl);
         return $this->render(
             'main.html.twig',
