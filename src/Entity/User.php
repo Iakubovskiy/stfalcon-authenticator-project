@@ -21,6 +21,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
+    const int DIGITS = 6;
+    const int PERIOD = 30;
     #[ORM\Id]
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -159,8 +161,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         return new TotpConfiguration(
             $encryptionService->decryptSecret($this->secretKey ?? throw new \RuntimeException('Secret key is not configured')),
             TotpConfiguration::ALGORITHM_SHA1,
-            30,
-            6
+            self::PERIOD,
+            self::DIGITS
         );
     }
 
