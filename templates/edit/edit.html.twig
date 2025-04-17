@@ -10,7 +10,12 @@
     <form action="{{ path('editUser', { id: user.id }) }}" method="post" enctype="multipart/form-data">
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            {% if invalidValue %}
+                <input type="email" id="email" name="email" value="{{ invalidValue }}" required>
+                <p class="text-danger mt-2">{{ errorMessage }}</p>
+            {% else %}
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            {% endif %}
         </div>
 
         <div>

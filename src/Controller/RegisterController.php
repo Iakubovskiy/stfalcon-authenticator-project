@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 
 class RegisterController extends AbstractController
@@ -20,7 +21,7 @@ class RegisterController extends AbstractController
 
     }
 
-    #[Route('/register', name: 'register')]
+    #[Route('/register', name: 'register', methods: ['GET'])]
     public function register(): Response
     {
         return $this->render('auth/register.html.twig');
@@ -33,6 +34,7 @@ class RegisterController extends AbstractController
         $email = $request->request->get('email');
         /** @var string $password */
         $password = $request->request->get('password');
+        // string
         $passwordConfirm = $request->request->get('password_confirm');
 
         if ($password !== $passwordConfirm) {
@@ -47,13 +49,9 @@ class RegisterController extends AbstractController
 
             return $this->redirectToRoute('login');
 
-        } catch (ClientExceptionInterface $e) {
-            $error = json_decode($e->getResponse()->getContent(false), true);
-            $message = is_array($error) && isset($error['message']) ? $error['message'] : 'Помилка під час реєстрації';
-            $this->addFlash('error', $message);
-            return $this->redirectToRoute('register');
-        } catch (\Exception $e) {
-            $this->addFlash('error', 'Невідома помилка');
+        } catch (ValidationFailedException $e) {
+            $message = $e->getViolations()[0]->getMessage();
+            $this->addFlash('danger', $message);
             return $this->redirectToRoute('register');
         }
     }

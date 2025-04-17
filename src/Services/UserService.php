@@ -14,6 +14,7 @@ use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInte
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 readonly class UserService
@@ -28,25 +29,21 @@ readonly class UserService
     ) {
     }
 
-    public function register(RegisterDto $registerDto): User
+    public function register(RegisterDto $registerDto): void
     {
-        $existingUser = $this->userRepository->findOneBy([
-            'email' => $registerDto->email,
-        ]);
-        if ($existingUser !== null) {
-            throw new ConflictHttpException('Користувач з таким email вже існує.');
+        $constraintViolationList = $this->validator->validate($registerDto);
+        if (count($constraintViolationList) > 0) {
+            throw new ValidationFailedException($registerDto, $constraintViolationList);
         }
 
         $user = new User();
         $user->setEmail($registerDto->email);
 
-        $hashed_password = $this->userPasswordHasher->hashPassword($user, $registerDto->password);
-        $user->setPassword($hashed_password);
+        $hashPassword = $this->userPasswordHasher->hashPassword($user, $registerDto->password);
+        $user->setPassword($hashPassword);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
-
-        return $user;
     }
 
     public function getUserById(Uuid $uuid): User
@@ -88,7 +85,7 @@ readonly class UserService
         return $this->totpAuthenticator->getQRContent($user);
     }
 
-    public function updateLastLogin(Uuid $uuid): User
+    public function updateLastLogin(Uuid $uuid): void
     {
         $user = $this->getUserById($uuid);
         $user->setLastLogin(\Carbon\Carbon::now());
@@ -96,22 +93,21 @@ readonly class UserService
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        return $user;
     }
 
-    public function updateUser(Uuid $uuid, UpdateUserDto $updateUserDto): User
+    public function updateUser(Uuid $uuid, UpdateUserDto $updateUserDto): void
     {
+        $user = $this->getUserById($uuid);
+        if($user->getEmail() === $updateUserDto->email)
+        {
+            $updateUserDto->email = null;
+        }
         $constraintViolationList = $this->validator->validate($updateUserDto);
-        if (count($constraintViolationList) > 0) {
-            $errorMessages = [];
-            foreach ($constraintViolationList as $error) {
-                $errorMessages[] = $error->getPropertyPath() . ': ' . $error->getMessage();
-            }
 
-            throw new RuntimeException(implode(', ', $errorMessages));
+        if (count($constraintViolationList) > 0) {
+            throw new ValidationFailedException($updateUserDto, $constraintViolationList);
         }
 
-        $user = $this->getUserById($uuid);
         $user->setEmail($updateUserDto->email);
         if ($updateUserDto->password !== null && $updateUserDto->password !== '' && $updateUserDto->password !== '0') {
             $hashed_password = $this->userPasswordHasher->hashPassword($user, $updateUserDto->password);
@@ -122,8 +118,6 @@ readonly class UserService
             $user->setPhotoUrl($updateUserDto->photoUrl);
         }
 
-        $this->entityManager->persist($user);
         $this->entityManager->flush();
-        return $user;
     }
 }

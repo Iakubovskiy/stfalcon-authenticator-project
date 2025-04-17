@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 class EditController extends AbstractController
 {
@@ -21,11 +23,17 @@ class EditController extends AbstractController
     }
 
     #[Route(path: 'edit/{id}', name: 'edit', methods: ['GET'])]
-    public function edit(Uuid $id): Response
+    public function edit(Uuid $id, Request $request): Response
     {
         $user = $this->userService->getUserById($id);
+        /** @var ?string $errorMessage*/
+        $errorMessage = $request->query->get('errorMessage');
+        /** @var ?string $invalidValue*/
+        $invalidValue = $request->query->get('invalidValue');
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
+            'errorMessage' => $errorMessage,
+            'invalidValue' => $invalidValue,
         ]);
     }
 
@@ -37,14 +45,17 @@ class EditController extends AbstractController
         $passwordRaw = $request->request->get('password');
         /** @var ?string $password */
         $password = is_string($passwordRaw) ? $passwordRaw : null;
+        /** @var ?UploadedFile $profilePictureFile */
         $profilePictureFile = $request->files->get('profile_picture');
         $filePath = '';
-        if ($profilePictureFile instanceof UploadedFile) {
+        // move into dedicated file storage service
+
+        if ($profilePictureFile !== null) {
             $originalFilename = pathinfo($profilePictureFile->getClientOriginalName(), PATHINFO_FILENAME);
             $profilePictureFilename = $originalFilename . '-' . uniqid() . '.' . $profilePictureFile->guessExtension();
             try {
                 /** @var string $rootDirectory */
-                $rootDirectory = $this->getParameter('profile_pictures_directory');
+                $rootDirectory = $this->getParameter('profile_pictures_directory'); // autowire
                 $profilePictureFile->move(
                     $rootDirectory,
                     $profilePictureFilename
@@ -63,7 +74,15 @@ class EditController extends AbstractController
             $password,
             $filePath,
         );
-        $this->userService->updateUser($id, $updateUserDto);
+        try {
+            $this->userService->updateUser($id, $updateUserDto);
+        } catch (ValidationFailedException $e) {
+            return $this->redirectToRoute('edit', [
+                'id' => $id,
+                'errorMessage' => $e->getViolations()[0]->getMessage(),
+                'invalidValue' => $e->getViolations()[0]->getInvalidValue(),
+            ]);
+        }
         $this->addFlash('success', 'Успішно оновлено');
         return $this->redirectToRoute('edit', [
             'id' => $id,

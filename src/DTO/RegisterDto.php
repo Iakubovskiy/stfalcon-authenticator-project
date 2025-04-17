@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DTO;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator as CustomValidator;
 
 readonly class RegisterDto
 {
@@ -14,6 +15,7 @@ readonly class RegisterDto
             message: "The email '{{ value }}' is not a valid email.",
             mode: Assert\Email::VALIDATION_MODE_STRICT
         )]
+        #[CustomValidator\ConstrainUniqueEmail]
         public string $email,
         #[Assert\NotBlank]
         public string $password,
