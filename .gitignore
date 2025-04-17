@@ -9,18 +9,11 @@
 /var/
 /vendor/
 /.env.dev
-###< symfony/framework-bundle ###
-
-###> phpstan/phpstan ###
 phpstan.neon
-###< phpstan/phpstan ###
-
-###> phpunit/phpunit ###
 /phpunit.xml
 /.phpunit.cache/
-###< phpunit/phpunit ###
 
-###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
-###< symfony/phpunit-bridge ###
+
+/compose.override.yaml

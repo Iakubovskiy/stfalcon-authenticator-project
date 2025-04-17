@@ -4,10 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="uri signer implemented">
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="quality tools used">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.override.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.override.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.prod.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit/edit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +40,13 @@
     &quot;assignee&quot;: &quot;Iakubovskiy&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Iakubovskiy/stfalcon-authenticator-project&quot;,
-    &quot;accountId&quot;: &quot;59b542b9-99b5-4769-b596-62bd084c5217&quot;
-  }
-}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Iakubovskiy/stfalcon-authenticator-project",
+    "accountId": "59b542b9-99b5-4769-b596-62bd084c5217"
+  },
+  "editorReviewEnabled": false
+}]]></component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/scheb/2fa-bundle" />
@@ -173,6 +187,9 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2vROs9U8bffxkM5lHxQEMpBnSJ0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -182,7 +199,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "#1 on dev",
     "last_opened_file_path": "/Users/admin/Desktop/Stfalcon/authenticator-project/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -262,6 +279,7 @@
       <workItem from="1744708380496" duration="12959000" />
       <workItem from="1744722398872" duration="2307000" />
       <workItem from="1744727047489" duration="16240000" />
+      <workItem from="1744894188328" duration="8004000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -335,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744821227988</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="quality tools used">
+      <option name="closed" value="true" />
+      <created>1744821663128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744821663128</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +388,7 @@
     <MESSAGE value="unit validation test" />
     <MESSAGE value="integration validation test and application test for api&#10;also quality tools applied" />
     <MESSAGE value="uri signer implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="uri signer implemented" />
+    <MESSAGE value="quality tools used" />
+    <option name="LAST_COMMIT_MESSAGE" value="quality tools used" />
   </component>
 </project>
