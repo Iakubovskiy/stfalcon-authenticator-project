@@ -7,17 +7,16 @@ namespace App\Subscribers;
 use App\Entity\User;
 use App\Services\UserService;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Event\LoginSuccessEvent;
 
-readonly class LoginSubscriber implements EventSubscriberInterface
+#[AsEventListener(event: LoginSuccessEvent::class, method: 'onLoginSuccessEvent')]
+readonly class LoginSubscriber
 {
     public function __construct(
         private UserService $userService
     ) {
     }
 
-    //    #[AsEventListener(event: LoginSuccessEvent::class)]
     public function onLoginSuccessEvent(LoginSuccessEvent $loginSuccessEvent): void
     {
         $user = $loginSuccessEvent->getUser();
@@ -27,12 +26,5 @@ readonly class LoginSubscriber implements EventSubscriberInterface
         }
 
         $this->userService->updateLastLogin($user->getId());
-    }
-
-    public static function getSubscribedEvents()
-    {
-        return [
-            LoginSuccessEvent::class => 'onLoginSuccessEvent',
-        ];
     }
 }

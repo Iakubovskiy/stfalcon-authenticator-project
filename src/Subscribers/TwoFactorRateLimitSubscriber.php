@@ -4,25 +4,20 @@ declare(strict_types=1);
 
 namespace App\Subscribers;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 
-readonly class TwoFactorRateLimitSubscriber implements EventSubscriberInterface
+#[AsEventListener(event: RequestEvent::class, method: 'onRequest')]
+readonly class TwoFactorRateLimitSubscriber
 {
     public function __construct(
-        private RateLimiterFactory $twoFactorLoginLimiter
+        #[Autowire('@limiter.two_factor_login')]
+        private RateLimiterFactory $limiter
     ) {
     }
-
-    public static function getSubscribedEvents(): array
-    {
-        return [
-            RequestEvent::class => ['onRequest', 10],
-        ];
-    }
-
     public function onRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
@@ -30,8 +25,10 @@ readonly class TwoFactorRateLimitSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $ip = $request->getClientIp() ?? 'unknown';
-        $limiter = $this->twoFactorLoginLimiter->create($ip);
+        $ip = $request->getClientIp();
+        if($ip === null)
+            throw new \RuntimeException('IP not found');
+        $limiter = $this->limiter->create($ip);
 
         $rateLimit = $limiter->consume(1);
         if (! $rateLimit->isAccepted()) {
