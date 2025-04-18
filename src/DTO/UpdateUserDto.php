@@ -17,7 +17,7 @@ class UpdateUserDto
         #[CustomValidator\ConstrainUniqueEmail]
         public ?string $email,
         public ?string $password,
-        public ?string $photoUrl
+        public ?string $photoPath
     ) {
     }
 }

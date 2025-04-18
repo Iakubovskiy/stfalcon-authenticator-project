@@ -80,8 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     public function getUserIdentifier(): string
     {
-        assert(trim($this->email) !== '');
-        return $this->email !== '' && $this->email !== '0' ? $this->email : 'not.valid@email.com';
+        return $this->id->toString();
     }
 
     /**

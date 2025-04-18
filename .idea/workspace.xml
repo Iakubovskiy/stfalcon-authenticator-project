@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="constants used">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="custom validation + UserService.php corrected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit/edit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +271,7 @@
       <workItem from="1744708380496" duration="12959000" />
       <workItem from="1744722398872" duration="2307000" />
       <workItem from="1744727047489" duration="16240000" />
-      <workItem from="1744894188328" duration="15839000" />
+      <workItem from="1744894188328" duration="18779000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -373,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744903951811</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="custom validation + UserService.php corrected">
+      <option name="closed" value="true" />
+      <created>1744911456879</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744911456879</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,6 +407,7 @@
     <MESSAGE value="quality tools used" />
     <MESSAGE value="docker compose configuration corrected" />
     <MESSAGE value="constants used" />
-    <option name="LAST_COMMIT_MESSAGE" value="constants used" />
+    <MESSAGE value="custom validation + UserService.php corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="custom validation + UserService.php corrected" />
   </component>
 </project>

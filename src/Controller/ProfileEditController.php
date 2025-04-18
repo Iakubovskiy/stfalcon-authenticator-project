@@ -15,7 +15,7 @@ use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 
-class EditController extends AbstractController
+class ProfileEditController extends AbstractController
 {
     public function __construct(
         private readonly UserService $userService

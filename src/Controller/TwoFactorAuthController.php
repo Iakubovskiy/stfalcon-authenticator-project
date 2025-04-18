@@ -73,19 +73,7 @@ class TwoFactorAuthController extends AbstractController
     #[Route('/qr-secret/{id}', name: 'qr_secret', methods: ['GET'])]
     public function qrSecret(Uuid $id, Request $request): Response
     {
-        /** @var ?string $queryString */
-        $queryString = $request->server->get('QUERY_STRING');
-        $qs = ($queryString !== null) ? '?' . $queryString : '';
-        $url = parse_url($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $request->getPathInfo() . $qs);
-        if ($url === false) {
-            throw new \InvalidArgumentException('Malformed URL');
-        }
-
-        $path = $url['path'] ?? '';
-        $query = isset($url['query']) ? '?' . $url['query'] : '';
-
-        $urlPath = $path . $query;
-        $isValid = $this->uriSigner->check($urlPath);
+        $isValid = $this->uriSigner->checkRequest($request);
         if (! $isValid) {
             return new Response(
                 status: 403
