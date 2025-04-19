@@ -11,14 +11,14 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Uid\Uuid;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 class ProfileEditController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService
+        private readonly UserService $userService, private readonly TokenStorageInterface $tokenStorage
     ) {
     }
 
@@ -26,9 +26,9 @@ class ProfileEditController extends AbstractController
     public function edit(Uuid $id, Request $request): Response
     {
         $user = $this->userService->getUserById($id);
-        /** @var ?string $errorMessage*/
+        /** @var ?string $errorMessage */
         $errorMessage = $request->query->get('errorMessage');
-        /** @var ?string $invalidValue*/
+        /** @var ?string $invalidValue */
         $invalidValue = $request->query->get('invalidValue');
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
@@ -40,6 +40,11 @@ class ProfileEditController extends AbstractController
     #[Route(path: '/edit/{id}', name: 'editUser', methods: ['POST'])]
     public function editUser(Uuid $id, Request $request): Response
     {
+        $clientId = $this->tokenStorage->getToken()->getUserIdentifier();
+        if(!Uuid::fromString($clientId) ->equals($id))
+        {
+            return new Response(status: 403);
+        }
         /** @var string $email */
         $email = $request->request->get('email');
         $passwordRaw = $request->request->get('password');

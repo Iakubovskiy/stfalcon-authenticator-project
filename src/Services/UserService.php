@@ -11,7 +11,6 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use RuntimeException;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
@@ -95,27 +94,22 @@ readonly class UserService
 
     }
 
-    public function updateUser(Uuid $uuid, UpdateUserDto $updateUserDto): void
+    public function updateUser(Uuid $id, UpdateUserDto $updateUserDto): void
     {
-        $user = $this->getUserById($uuid);
-        if($user->getEmail() === $updateUserDto->email)
-        {
-            $updateUserDto->email = null;
-        }
         $constraintViolationList = $this->validator->validate($updateUserDto);
-
         if (count($constraintViolationList) > 0) {
             throw new ValidationFailedException($updateUserDto, $constraintViolationList);
         }
 
+        $user = $this->getUserById($id);
         $user->setEmail($updateUserDto->email);
         if ($updateUserDto->password !== null && $updateUserDto->password !== '' && $updateUserDto->password !== '0') {
             $hashed_password = $this->userPasswordHasher->hashPassword($user, $updateUserDto->password);
             $user->setPassword($hashed_password);
         }
 
-        if ($updateUserDto->photoUrl !== null && $updateUserDto->photoUrl !== '') {
-            $user->setPhotoUrl($updateUserDto->photoUrl);
+        if ($updateUserDto->photoPath !== null && $updateUserDto->photoPath !== '') {
+            $user->setPhotoUrl($updateUserDto->photoPath);
         }
 
         $this->entityManager->flush();

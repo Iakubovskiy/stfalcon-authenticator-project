@@ -4,11 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="main controller added">
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="AsEventListener added and TwoFactorRateLimiter autowired">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainPageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmailValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmailValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/UpdateEndpointTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +53,7 @@
   },
   "editorReviewEnabled": false
 }]]></component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/scheb/2fa-bundle" />
       <path value="$PROJECT_DIR$/vendor/spomky-labs/otphp" />
@@ -185,8 +203,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "PHPUnit.UpdateEndpointTest.testEditionOfAnotherUserIsProhibited.executor": "Run",
+    "PHPUnit.UpdateEndpointTest.testEmailUpdate.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm": "Docker Compose",
+    "credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm": "Docker Compose",
     "git-widget-placeholder": "#1 on dev",
     "last_opened_file_path": "/Users/admin/Desktop/Stfalcon/authenticator-project/templates",
     "node.js.detected.package.eslint": "true",
@@ -195,7 +217,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "settings.editor.selected.configurable": "php.test.frameworks.configurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -221,29 +243,19 @@
       <recent name="$PROJECT_DIR$/web" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.TestUpdateEndpointTest.testEmailUpdate">
-    <configuration name="EmailValidationTest.testNotValidEmailValidation (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="tests\EmailValidationTest" file="$PROJECT_DIR$/tests/EmailValidationTest.php" method="testNotValidEmailValidation" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.UpdateEndpointTest.testEmailUpdate">
+    <configuration name="UpdateEndpointTest.testEditionOfAnotherUserIsProhibited" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\UpdateEndpointTest" configuration_file="/app/phpunit.dist.xml" file="$PROJECT_DIR$/tests/UpdateEndpointTest.php" method="testEditionOfAnotherUserIsProhibited" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="EmailValidationTest.testNotValidEmailValidation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\EmailValidationTest" file="$PROJECT_DIR$/src/tests/EmailValidationTest.php" method="testNotValidEmailValidation" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestUpdateEndpointTest.testEmailUpdate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\TestUpdateEndpointTest" file="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" method="testEmailUpdate" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestUpdateEndpointTest.testSomething" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\TestUpdateEndpointTest" file="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" method="testSomething" scope="Method" />
+    <configuration name="UpdateEndpointTest.testEmailUpdate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\UpdateEndpointTest" configuration_file="/app/phpunit.dist.xml" file="$PROJECT_DIR$/tests/UpdateEndpointTest.php" method="testEmailUpdate" scope="Method" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.TestUpdateEndpointTest.testEmailUpdate" />
-        <item itemvalue="PHPUnit.TestUpdateEndpointTest.testSomething" />
-        <item itemvalue="PHPUnit.EmailValidationTest.testNotValidEmailValidation (1)" />
-        <item itemvalue="PHPUnit.EmailValidationTest.testNotValidEmailValidation" />
+        <item itemvalue="PHPUnit.UpdateEndpointTest.testEmailUpdate" />
+        <item itemvalue="PHPUnit.UpdateEndpointTest.testEditionOfAnotherUserIsProhibited" />
       </list>
     </recent_temporary>
   </component>
@@ -267,7 +279,7 @@
       <workItem from="1744708380496" duration="12959000" />
       <workItem from="1744722398872" duration="2307000" />
       <workItem from="1744727047489" duration="16240000" />
-      <workItem from="1744894188328" duration="21018000" />
+      <workItem from="1744894188328" duration="29259000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -381,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744964894563</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="AsEventListener added and TwoFactorRateLimiter autowired">
+      <option name="closed" value="true" />
+      <created>1744967041286</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1744967041286</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +433,11 @@
     <MESSAGE value="constants used" />
     <MESSAGE value="custom validation + UserService.php corrected" />
     <MESSAGE value="main controller added" />
-    <option name="LAST_COMMIT_MESSAGE" value="main controller added" />
+    <MESSAGE value="AsEventListener added and TwoFactorRateLimiter autowired" />
+    <option name="LAST_COMMIT_MESSAGE" value="AsEventListener added and TwoFactorRateLimiter autowired" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

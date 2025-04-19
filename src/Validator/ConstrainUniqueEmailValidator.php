@@ -1,39 +1,52 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace App\Validator;
 
 use App\Repository\UserRepository;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
-use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 class ConstrainUniqueEmailValidator extends ConstraintValidator
 {
     public function __construct(
-        private readonly UserRepository $userRepository
-    )
-    {
+        private readonly UserRepository $userRepository,
+        private readonly TokenStorageInterface $tokenStorage,
+    ) {
 
     }
-    public function validate(mixed $value, Constraint $constraint):void
+
+    public function validate(mixed $value, Constraint $constraint): void
     {
-        if(!($constraint instanceof ConstrainUniqueEmail)){
-            throw new UnexpectedTypeException($constraint, ConstrainUniqueEmailValidator::class);
+        if (! ($constraint instanceof ConstrainUniqueEmail)) {
+            throw new UnexpectedTypeException($constraint, self::class);
         }
 
-        if(!is_string($value)){
+        if (null === $value) {
+            return;
+        }
+
+        if (! is_string($value)) {
             throw new UnexpectedValueException($value, 'string');
         }
 
+        $tokenUserId = $this->tokenStorage->getToken()->getUserIdentifier();
+        $tokenUser = $this->userRepository->find($tokenUserId);
+        if($tokenUser !== null && $tokenUser->getEmail() === $value){
+            return;
+        }
+
+
         $user = $this->userRepository->findOneBy([
-            'email'=>$value
+            'email' => $value,
         ]);
-        if($user !== null)
+        if ($user !== null) {
             $this->context->buildViolation('not unique email')
-            ->addViolation();
+                ->addViolation();
+        }
     }
 }

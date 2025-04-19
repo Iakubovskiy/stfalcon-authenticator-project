@@ -14,6 +14,7 @@ use RuntimeException;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
 
 final class EmailValidationTest extends TestCase
@@ -43,7 +44,7 @@ final class EmailValidationTest extends TestCase
 
     public function testNotValidEmailValidation(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(ValidationFailedException::class);
         $this->expectExceptionMessageMatches(' /is not a valid email/');
 
         $updateUserDto = new UpdateUserDto(
@@ -51,7 +52,6 @@ final class EmailValidationTest extends TestCase
             null,
             null,
         );
-
         $this->userService->updateUser(Uuid::fromString('0196158b-a5bf-7f06-96be-ec13aa7f6902'), $updateUserDto);
     }
 }

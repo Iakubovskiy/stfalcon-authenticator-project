@@ -18,6 +18,7 @@ readonly class TwoFactorRateLimitSubscriber
         private RateLimiterFactory $limiter
     ) {
     }
+
     public function onRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
@@ -26,8 +27,9 @@ readonly class TwoFactorRateLimitSubscriber
         }
 
         $ip = $request->getClientIp();
-        if($ip === null)
+        if ($ip === null) {
             throw new \RuntimeException('IP not found');
+        }
         $limiter = $this->limiter->create($ip);
 
         $rateLimit = $limiter->consume(1);

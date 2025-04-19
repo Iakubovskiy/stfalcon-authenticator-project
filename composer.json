@@ -10,22 +10,22 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-sodium": "*",
-        "doctrine/dbal": "^3",
+        "doctrine/dbal": "^3.9.4",
         "doctrine/doctrine-bundle": "^2.14",
-        "doctrine/doctrine-migrations-bundle": "^3.4",
-        "doctrine/orm": "^3.3",
-        "egulias/email-validator": "^4.0",
-        "endroid/qr-code": "^6.0",
-        "nelmio/api-doc-bundle": "^5.0",
+        "doctrine/doctrine-migrations-bundle": "^3.4.1",
+        "doctrine/orm": "^3.3.2",
+        "egulias/email-validator": "^4.0.4",
+        "endroid/qr-code": "^6.0.7",
+        "nelmio/api-doc-bundle": "^5.0.1",
         "nesbot/carbon": "^3.9",
         "runtime/frankenphp-symfony": "^0.2.0",
-        "scheb/2fa-bundle": "^7.7",
-        "scheb/2fa-totp": "^7.7",
+        "scheb/2fa-bundle": "^7.7.1",
+        "scheb/2fa-totp": "^7.7.1",
         "spomky-labs/otphp": "^11.3",
         "symfony/asset": "7.2.*",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.5",
         "symfony/framework-bundle": "7.2.*",
         "symfony/http-client": "7.2.*",
         "symfony/lock": "7.2.*",
@@ -77,7 +77,22 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+    "ci:pack": [
+        "ci:ecs",
+        "ci:rector",
+        "ci:phpstan",
+        "ci:test",
+        "ci:cache-clear"
+    ],
+    "ci:ecs": "vendor/bin/ecs",
+    "ci:ecs-fix": "vendor/bin/ecs --fix",
+    "ci:rector": "vendor/bin/rector",
+    "ci:rector-dry": "vendor/bin/rector --dry-run",
+    "ci:phpstan": "vendor/bin/phpstan",
+    "ci:test": "vendor/bin/phpunit",
+    "ci:cache-clear": "bin/console cache:clear"
+
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -90,15 +105,15 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "*",
-        "rector/rector": "^2.0",
+        "phpstan/phpstan": "^2.1.12",
+        "phpunit/phpunit": ">=12.1.2",
+        "rector/rector": "^2.0.11",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
-        "symfony/maker-bundle": "^1.62",
+        "symfony/maker-bundle": "^1.62.1",
         "symfony/phpunit-bridge": "^7.2",
         "symfony/stopwatch": "7.2.*",
         "symfony/web-profiler-bundle": "7.2.*",
-        "symplify/easy-coding-standard": "^12.5"
+        "symplify/easy-coding-standard": "^12.5.11"
     }
 }
