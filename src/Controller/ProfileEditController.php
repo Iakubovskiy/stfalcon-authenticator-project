@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\UpdateUserDto;
+use App\Services\FileService;
+use App\Services\UpdateUserService;
 use App\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -14,11 +16,16 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ProfileEditController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService, private readonly TokenStorageInterface $tokenStorage
+        private readonly UserService $userService,
+        private readonly UpdateUserService $updateUserService,
+        private readonly TokenStorageInterface $tokenStorage,
+        private readonly FileService $fileService,
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
@@ -41,37 +48,21 @@ class ProfileEditController extends AbstractController
     public function editUser(Uuid $id, Request $request): Response
     {
         $clientId = $this->tokenStorage->getToken()->getUserIdentifier();
-        if(!Uuid::fromString($clientId) ->equals($id))
-        {
+        if (! Uuid::fromString($clientId) ->equals($id)) {
             return new Response(status: 403);
         }
         /** @var string $email */
         $email = $request->request->get('email');
+        /** @var ?string $passwordRaw */
         $passwordRaw = $request->request->get('password');
         /** @var ?string $password */
         $password = is_string($passwordRaw) ? $passwordRaw : null;
         /** @var ?UploadedFile $profilePictureFile */
         $profilePictureFile = $request->files->get('profile_picture');
-        $filePath = '';
-        // move into dedicated file storage service
+        $filePath = null;
 
         if ($profilePictureFile !== null) {
-            $originalFilename = pathinfo($profilePictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $profilePictureFilename = $originalFilename . '-' . uniqid() . '.' . $profilePictureFile->guessExtension();
-            try {
-                /** @var string $rootDirectory */
-                $rootDirectory = $this->getParameter('profile_pictures_directory'); // autowire
-                $profilePictureFile->move(
-                    $rootDirectory,
-                    $profilePictureFilename
-                );
-                $filePath = $profilePictureFilename;
-            } catch (\Exception $e) {
-                $this->addFlash('danger', 'Помилка при завантаженні фото');
-                return $this->redirectToRoute('edit', [
-                    'id' => $id,
-                ]);
-            }
+            $filePath = $this->fileService->saveFile($profilePictureFile);
         }
 
         $updateUserDto = new UpdateUserDto(
@@ -80,7 +71,7 @@ class ProfileEditController extends AbstractController
             $filePath,
         );
         try {
-            $this->userService->updateUser($id, $updateUserDto);
+            $this->updateUserService->updateUser($id, $updateUserDto);
         } catch (ValidationFailedException $e) {
             return $this->redirectToRoute('edit', [
                 'id' => $id,
@@ -88,7 +79,7 @@ class ProfileEditController extends AbstractController
                 'invalidValue' => $e->getViolations()[0]->getInvalidValue(),
             ]);
         }
-        $this->addFlash('success', 'Успішно оновлено');
+        $this->addFlash('success', $this->translator->trans('success.update'));
         return $this->redirectToRoute('edit', [
             'id' => $id,
         ]);

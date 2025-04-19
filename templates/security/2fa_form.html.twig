@@ -5,6 +5,6 @@
 <form method="post" action="{{ path('2fa_login_check') }}">
     <label for="auth_code">Введіть код:</label>
     <input type="text" id="auth_code" name="_auth_code" autofocus />
-    <button type="submit">Підтвердити</button>
+    <button type="submit">{{ 'twig.confirm' | trans }}</button>
 </form>
 {% endblock %}

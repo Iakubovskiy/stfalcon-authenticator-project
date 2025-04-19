@@ -5,17 +5,19 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\RegisterDto;
-use App\Services\UserService;
+use App\Services\RegisterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegisterController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService
+        private readonly RegisterService $registerService,
+        private readonly TranslatorInterface $translator,
     ) {
 
     }
@@ -26,7 +28,7 @@ class RegisterController extends AbstractController
         return $this->render('auth/register.html.twig');
     }
 
-    #[Route('/register/process', name: 'register_process', methods: ['POST'])]
+    #[Route('/register', name: 'register_process', methods: ['POST'])]
     public function registerProcess(Request $request): Response
     {
         /** @var string $email */
@@ -37,21 +39,22 @@ class RegisterController extends AbstractController
         $passwordConfirm = $request->request->get('password_confirm');
 
         if ($password !== $passwordConfirm) {
-            $this->addFlash('error', 'Паролі не збігаються.');
+            $this->addFlash('error', $this->translator->trans('errors.passwords_do_not_match'));
             return $this->redirectToRoute('register');
         }
 
         $registerDTO = new RegisterDTO($email, $password);
         try {
-            $this->userService->register($registerDTO);
-            $this->addFlash('success', 'Реєстрація успішна. Увійдіть у свій акаунт.');
+            $this->registerService->register($registerDTO);
+            $this->addFlash('success', $this->translator->trans('success.register'));
 
             return $this->redirectToRoute('login');
 
         } catch (ValidationFailedException $e) {
-            $message = $e->getViolations()[0]->getMessage();
-            $this->addFlash('danger', $message);
-            return $this->redirectToRoute('register');
+            $errors = $e->getViolations();
+            return $this->render('auth/register.html.twig', [
+                'errors' => $errors,
+            ]);
         }
     }
 }

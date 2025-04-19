@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Профіль користувача{% endblock %}
+{% block title %}{{ 'twig.main.title' | trans }}{% endblock %}
 
 {% block body %}
     <div class="container mt-5">
-        <h1>Профіль користувача</h1>
+        <h1>{{ 'twig.main.title' | trans }}</h1>
 
         <div class="card mt-4 text-center">
             <img src="{{ asset('uploads/' ~ app.user.photoUrl) }}"
@@ -13,7 +13,7 @@
             >
             <div class="card-body">
                 <p><strong>Email:</strong> {{ app.user.email }}</p>
-                <p><strong>2FA Увімкнено:</strong> {{ app.user.totpAuthenticationEnabled ? 'Так' : 'Ні' }}</p>
+                <p><strong>{{ 'twig.main.is_two_factor_enabled'|trans }}</strong> {{ app.user.totpAuthenticationEnabled ? 'twig.main.yes' | trans : 'twig.main.no' | trans }}</p>
             </div>
         </div>
         <a class="btn w-auto btn-warning" href="edit/{{ app.user.id }}">Edit</a>
@@ -24,11 +24,11 @@
                 </div>
 
                 <button class="btn btn-danger w-auto mt-4" data-bs-toggle="modal" data-bs-target="#disable2FAModal">
-                    Вимкнути 2FA
+                    {{ 'twig.main.disable_two_factor' | trans }}
                 </button>
                 {% else %}
                     <button class="btn btn-success w-auto mt-4" data-bs-toggle="modal" data-bs-target="#disable2FAModal">
-                        Ввімкнути 2FA
+                        {{ 'twig.main.enable_two_factor' | trans }}
                     </button>
             {% endif %}
         </div>
@@ -44,11 +44,11 @@
                     <form method="post" action="{{ formAction }}">
 
                     <div class="modal-header">
-                            <h5 class="modal-title" id="disable2FAModalLabel">Підтвердження пароля</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+                            <h5 class="modal-title" id="disable2FAModalLabel">{{ 'twig.main.modal.title' | trans }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label= {{ 'twig.main.modal.button.close' | trans }}></button>
                         </div>
                         <div class="modal-body">
-                            <p>Для вимкнення двофакторної автентифікації введіть свій пароль:</p>
+                            <p>{{ 'twig.main.modal.body' | trans }}</p>
                             <label>
                                 <input type="password" id="password" name="password" class="form-control" required>
                             </label>
@@ -57,9 +57,9 @@
                             </label>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'twig.main.modal.button.cancel' | trans }}</button>
                             {% set buttonClass = app.user.totpAuthenticationEnabled ? 'btn-danger' : 'btn-success' %}
-                            {% set buttonText = app.user.totpAuthenticationEnabled ? 'Вимкнути 2FA' : 'Ввімкнути 2FA' %}
+                            {% set buttonText = app.user.totpAuthenticationEnabled ? 'twig.main.disable_two_factor' | trans : 'twig.main.enable_two_factor' | trans %}
                             <button type="submit" class="btn {{ buttonClass }}">{{ buttonText }}</button>
                         </div>
                         <input type="hidden" name="_token" value="{{ csrf_token('disable_2fa') }}">

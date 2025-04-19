@@ -10,12 +10,14 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ConstrainUniqueEmailValidator extends ConstraintValidator
 {
     public function __construct(
         private readonly UserRepository $userRepository,
         private readonly TokenStorageInterface $tokenStorage,
+        private readonly TranslatorInterface $translator,
     ) {
 
     }
@@ -26,7 +28,7 @@ class ConstrainUniqueEmailValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, self::class);
         }
 
-        if (null === $value) {
+        if ($value === null) {
             return;
         }
 
@@ -36,16 +38,15 @@ class ConstrainUniqueEmailValidator extends ConstraintValidator
 
         $tokenUserId = $this->tokenStorage->getToken()->getUserIdentifier();
         $tokenUser = $this->userRepository->find($tokenUserId);
-        if($tokenUser !== null && $tokenUser->getEmail() === $value){
+        if ($tokenUser !== null && $tokenUser->getEmail() === $value) {
             return;
         }
-
 
         $user = $this->userRepository->findOneBy([
             'email' => $value,
         ]);
         if ($user !== null) {
-            $this->context->buildViolation('not unique email')
+            $this->context->buildViolation($this->translator->trans('errors.not_unique_email'))
                 ->addViolation();
         }
     }

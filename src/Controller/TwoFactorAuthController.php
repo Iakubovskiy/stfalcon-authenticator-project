@@ -18,12 +18,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class TwoFactorAuthController extends AbstractController
 {
     public function __construct(
         private readonly UserService $userService,
         private readonly UriSigner $uriSigner,
+        private readonly TranslatorInterface $translator,
     ) {
 
     }
@@ -44,9 +46,9 @@ class TwoFactorAuthController extends AbstractController
         $uuid = Uuid::fromString($id);
         $success = $this->userService->disableTwoFactorAuthentication($uuid, $password);
         if ($success) {
-            $this->addFlash('warning', 'Двофакторна автентифікація вимкнена.');
+            $this->addFlash('warning', $this->translator->trans('warning.two_factor_off'));
         } else {
-            $this->addFlash('danger', 'Неправильний пароль. Спробуйте ще раз.');
+            $this->addFlash('danger', $this->translator->trans('errors.wrong_password'));
         }
 
         return $this->redirectToRoute('main');
@@ -62,9 +64,9 @@ class TwoFactorAuthController extends AbstractController
         $uuid = Uuid::fromString($id);
         $success = $this->userService->enableTwoFactorAuthentication($uuid, $password);
         if ($success) {
-            $this->addFlash('success', 'Двофакторна автентифікація ввімкнена.');
+            $this->addFlash('success', $this->translator->trans('success.two_factor_on'));
         } else {
-            $this->addFlash('danger', 'Неправильний пароль. Спробуйте ще раз.');
+            $this->addFlash('danger', $this->translator->trans('errors.wrong_password'));
         }
 
         return $this->redirectToRoute('main');
@@ -90,7 +92,7 @@ class TwoFactorAuthController extends AbstractController
             size: 300,
             margin: 10,
             roundBlockSizeMode: RoundBlockSizeMode::Margin,
-            labelText: 'QR code for authenticator apps',
+            labelText: $this->translator->trans('qr.qr_label'),
             labelFont: new OpenSans(15),
             labelAlignment: LabelAlignment::Center,
             logoResizeToWidth: 50,
@@ -99,7 +101,7 @@ class TwoFactorAuthController extends AbstractController
         $result = $builder->build();
         return new Response(
             $result->getString(),
-            \Symfony\Component\HttpFoundation\Response::HTTP_OK,
+            Response::HTTP_OK,
             [
                 'content-type' => 'image/png',
                 'Content-Disposition' => 'inline; filename="qr-code.png"',

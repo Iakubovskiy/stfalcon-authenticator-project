@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Subscribers;
 
 use App\Entity\User;
-use App\Services\UserService;
+use App\Services\UpdateUserService;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Security\Http\Event\LoginSuccessEvent;
 
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Event\LoginSuccessEvent;
 readonly class LoginSubscriber
 {
     public function __construct(
-        private UserService $userService
+        private UpdateUserService $updateUserService
     ) {
     }
 
@@ -25,6 +25,6 @@ readonly class LoginSubscriber
             return;
         }
 
-        $this->userService->updateLastLogin($user->getId());
+        $this->updateUserService->updateLastLogin($user->getId());
     }
 }

@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Реєстрація{% endblock %}
+{% block title %}{{ 'twig.register_form.title' | trans }}{% endblock %}
 
 {% block body %}
-    <h2>Реєстрація</h2>
+    <h2>{{ 'twig.register_form.title' | trans }}</h2>
     <form method="post" action="{{ path('register_process') }}">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
-        <label for="password">Пароль</label>
+        <label for="password">{{ 'twig.register_form.password' | trans }}</label>
         <input type="password" id="password" name="password" required>
 
-        <label for="password_confirm">Підтвердження паролю</label>
+        <label for="password_confirm">{{ 'twig.register_form.password_confirmation' | trans }}</label>
         <input type="password" id="password_confirm" name="password_confirm" required>
 
-        <button type="submit">Зареєструватися</button>
+        <button type="submit">{{ 'twig.register_form.register' | trans }}</button>
     </form>
-    <p>Вже маєш акаунт? <a href="{{ path('login') }}">Увійти</a></p>
+    <p>{{ 'twig.register_form.have_an_account.text' | trans }} <a href="{{ path('login') }}">{{ 'twig.register_form.have_an_account.login' | trans }}</a></p>
 {% endblock %}

@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use App\Services\EncryptionService;
 use DateTime;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfigurationInterface;
@@ -52,7 +53,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(nullable: true)]
     private ?string $secretKey;
 
-    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private DateTime $lastLogin;
 
     #[ORM\Column(nullable: true)]

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\DTO\RegisterDto;
-use App\DTO\UpdateUserDto;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,8 +11,7 @@ use RuntimeException;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
-use Symfony\Component\Validator\Exception\ValidationFailedException;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 readonly class UserService
 {
@@ -24,30 +21,13 @@ readonly class UserService
         private EntityManagerInterface $entityManager,
         private TotpAuthenticatorInterface $totpAuthenticator,
         private EncryptionService $encryptionService,
-        private ValidatorInterface $validator,
+        private TranslatorInterface $translator,
     ) {
-    }
-
-    public function register(RegisterDto $registerDto): void
-    {
-        $constraintViolationList = $this->validator->validate($registerDto);
-        if (count($constraintViolationList) > 0) {
-            throw new ValidationFailedException($registerDto, $constraintViolationList);
-        }
-
-        $user = new User();
-        $user->setEmail($registerDto->email);
-
-        $hashPassword = $this->userPasswordHasher->hashPassword($user, $registerDto->password);
-        $user->setPassword($hashPassword);
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
     }
 
     public function getUserById(Uuid $uuid): User
     {
-        return $this->userRepository->find($uuid) ?? throw new RuntimeException('User not found.');
+        return $this->userRepository->find($uuid) ?? throw new RuntimeException($this->translator->trans('errors.user_not_found'));
     }
 
     public function disableTwoFactorAuthentication(Uuid $uuid, string $password): bool
@@ -82,36 +62,5 @@ readonly class UserService
     {
         $user = $this->getUserById($uuid);
         return $this->totpAuthenticator->getQRContent($user);
-    }
-
-    public function updateLastLogin(Uuid $uuid): void
-    {
-        $user = $this->getUserById($uuid);
-        $user->setLastLogin(\Carbon\Carbon::now());
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
-
-    }
-
-    public function updateUser(Uuid $id, UpdateUserDto $updateUserDto): void
-    {
-        $constraintViolationList = $this->validator->validate($updateUserDto);
-        if (count($constraintViolationList) > 0) {
-            throw new ValidationFailedException($updateUserDto, $constraintViolationList);
-        }
-
-        $user = $this->getUserById($id);
-        $user->setEmail($updateUserDto->email);
-        if ($updateUserDto->password !== null && $updateUserDto->password !== '' && $updateUserDto->password !== '0') {
-            $hashed_password = $this->userPasswordHasher->hashPassword($user, $updateUserDto->password);
-            $user->setPassword($hashed_password);
-        }
-
-        if ($updateUserDto->photoPath !== null && $updateUserDto->photoPath !== '') {
-            $user->setPhotoUrl($updateUserDto->photoPath);
-        }
-
-        $this->entityManager->flush();
     }
 }

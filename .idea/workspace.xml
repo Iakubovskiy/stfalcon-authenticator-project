@@ -4,29 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="AsEventListener added and TwoFactorRateLimiter autowired">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="composer scripts + tests modified and logic and validator fixed">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainPageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmailValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmailValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/auth/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/auth/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/2fa_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/2fa_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestUpdateEndpointTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/UpdateEndpointTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +206,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "PHPUnit.UpdateEndpointTest.executor": "Run",
     "PHPUnit.UpdateEndpointTest.testEditionOfAnotherUserIsProhibited.executor": "Run",
     "PHPUnit.UpdateEndpointTest.testEmailUpdate.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -243,7 +247,11 @@
       <recent name="$PROJECT_DIR$/web" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.UpdateEndpointTest.testEmailUpdate">
+  <component name="RunManager" selected="PHPUnit.UpdateEndpointTest">
+    <configuration name="UpdateEndpointTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\UpdateEndpointTest" configuration_file="/app/phpunit.dist.xml" file="$PROJECT_DIR$/tests/UpdateEndpointTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="UpdateEndpointTest.testEditionOfAnotherUserIsProhibited" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\UpdateEndpointTest" configuration_file="/app/phpunit.dist.xml" file="$PROJECT_DIR$/tests/UpdateEndpointTest.php" method="testEditionOfAnotherUserIsProhibited" scope="Method" />
       <method v="2" />
@@ -254,6 +262,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.UpdateEndpointTest" />
         <item itemvalue="PHPUnit.UpdateEndpointTest.testEmailUpdate" />
         <item itemvalue="PHPUnit.UpdateEndpointTest.testEditionOfAnotherUserIsProhibited" />
       </list>
@@ -279,7 +288,7 @@
       <workItem from="1744708380496" duration="12959000" />
       <workItem from="1744722398872" duration="2307000" />
       <workItem from="1744727047489" duration="16240000" />
-      <workItem from="1744894188328" duration="29259000" />
+      <workItem from="1744894188328" duration="35536000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -401,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744967041286</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="composer scripts + tests modified and logic and validator fixed">
+      <option name="closed" value="true" />
+      <created>1745052307182</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1745052307182</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +451,8 @@
     <MESSAGE value="custom validation + UserService.php corrected" />
     <MESSAGE value="main controller added" />
     <MESSAGE value="AsEventListener added and TwoFactorRateLimiter autowired" />
-    <option name="LAST_COMMIT_MESSAGE" value="AsEventListener added and TwoFactorRateLimiter autowired" />
+    <MESSAGE value="composer scripts + tests modified and logic and validator fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="composer scripts + tests modified and logic and validator fixed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
