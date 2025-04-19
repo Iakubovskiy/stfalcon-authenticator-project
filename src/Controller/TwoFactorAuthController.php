@@ -6,12 +6,7 @@ namespace App\Controller;
 
 use App\Services\UserService;
 use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\Label\Font\OpenSans;
-use Endroid\QrCode\Label\LabelAlignment;
-use Endroid\QrCode\RoundBlockSizeMode;
-use Endroid\QrCode\Writer\PngWriter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,18 +78,9 @@ class TwoFactorAuthController extends AbstractController
         }
 
         $builder = new Builder(
-            writer: new PngWriter(),
-            writerOptions: [],
-            validateResult: false,
             data: $this->userService->getUserQrCodeData($id),
-            encoding: new Encoding('UTF-8'),
             errorCorrectionLevel: ErrorCorrectionLevel::High,
-            size: 300,
-            margin: 10,
-            roundBlockSizeMode: RoundBlockSizeMode::Margin,
             labelText: $this->translator->trans('qr.qr_label'),
-            labelFont: new OpenSans(15),
-            labelAlignment: LabelAlignment::Center,
             logoResizeToWidth: 50,
             logoPunchoutBackground: true
         );

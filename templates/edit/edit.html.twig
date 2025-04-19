@@ -10,12 +10,21 @@
     <form action="{{ path('editUser', { id: user.id }) }}" method="post" enctype="multipart/form-data">
         <div>
             <label for="email">Email:</label>
-            {% if invalidValue %}
-                <input type="email" id="email" name="email" value="{{ invalidValue }}" required>
-                <p class="text-danger mt-2">{{ errorMessage }}</p>
-            {% else %}
-                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            {% set emailError = null %}
+            {% for error in errors ?? [] %}
+                {% if error.propertyPath == 'email' %}
+                    {% set emailError = error %}
+                {% endif %}
+            {% endfor %}
+
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{ emailError.invalidValue?? user.email }}" required autofocus>
+
+            {% if emailError %}
+                <div class="alert alert-danger" role="alert">
+                    {{ emailError.message }}
+                </div>
             {% endif %}
+
         </div>
 
         <div>

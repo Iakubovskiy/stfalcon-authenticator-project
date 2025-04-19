@@ -18,30 +18,27 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
-#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[ORM\Table(name: 'users')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
-    public const int DIGITS = 6;
+    private const int DIGITS = 6;
 
-    public const int PERIOD = 30;
+    private const int PERIOD = 30;
 
     #[ORM\Id]
-    #[ORM\Column(type: UuidType::NAME, unique: true)]
-    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
-    #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    protected Uuid $id;
+    #[ORM\Column(type: UuidType::NAME)]
+    private Uuid $id;
 
-    #[ORM\Column(length: 180)]
     /**
      * @var non-empty-string
      */
+    #[ORM\Column(length: 180, unique: true)]
     private string $email;
 
     /**
      * @var list<string> The user roles
      */
-    #[ORM\Column]
+    #[ORM\Column( type: 'json', options: ['jsonb' => true])]
     private array $roles = ['ROLE_USER'];
 
     /**
@@ -58,6 +55,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     #[ORM\Column(nullable: true)]
     private ?string $photoUrl = null;
+
+    public function __construct(?Uuid $id = null)
+    {
+        if($id !== null) {
+            $this->id = $id;
+        } else{
+            $this->id = Uuid::v7();
+        }
+    }
 
     public function getId(): Uuid
     {
@@ -147,7 +153,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function isTotpAuthenticationEnabled(): bool
     {
-        return (bool) $this->secretKey;
+        return $this->secretKey !== null;
     }
 
     public function getTotpAuthenticationUsername(): string

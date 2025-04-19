@@ -36,10 +36,12 @@ class ConstrainUniqueEmailValidator extends ConstraintValidator
             throw new UnexpectedValueException($value, 'string');
         }
 
-        $tokenUserId = $this->tokenStorage->getToken()->getUserIdentifier();
-        $tokenUser = $this->userRepository->find($tokenUserId);
-        if ($tokenUser !== null && $tokenUser->getEmail() === $value) {
-            return;
+        $tokenUserId = $this->tokenStorage->getToken()?->getUserIdentifier();
+        if($tokenUserId !== null) {
+            $tokenUser = $this->userRepository->find($tokenUserId);
+            if ($tokenUser !== null && $tokenUser->getEmail() === $value) {
+                return;
+            }
         }
 
         $user = $this->userRepository->findOneBy([

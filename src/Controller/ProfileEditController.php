@@ -29,7 +29,7 @@ class ProfileEditController extends AbstractController
     ) {
     }
 
-    #[Route(path: 'edit/{id}', name: 'edit', methods: ['GET'])]
+    #[Route(path: '/edit/{id}', name: 'edit', methods: ['GET'])]
     public function edit(Uuid $id, Request $request): Response
     {
         $user = $this->userService->getUserById($id);
@@ -39,8 +39,6 @@ class ProfileEditController extends AbstractController
         $invalidValue = $request->query->get('invalidValue');
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
-            'errorMessage' => $errorMessage,
-            'invalidValue' => $invalidValue,
         ]);
     }
 
@@ -73,10 +71,10 @@ class ProfileEditController extends AbstractController
         try {
             $this->updateUserService->updateUser($id, $updateUserDto);
         } catch (ValidationFailedException $e) {
-            return $this->redirectToRoute('edit', [
-                'id' => $id,
-                'errorMessage' => $e->getViolations()[0]->getMessage(),
-                'invalidValue' => $e->getViolations()[0]->getInvalidValue(),
+            $user = $this->userService->getUserById($id);
+            return $this->render('edit/edit.html.twig', [
+                'user' => $user,
+                'errors' => $e->getViolations(),
             ]);
         }
         $this->addFlash('success', $this->translator->trans('success.update'));
