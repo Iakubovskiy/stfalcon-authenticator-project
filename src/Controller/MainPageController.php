@@ -24,7 +24,7 @@ class MainPageController extends AbstractController
     #[Route(path: '/main', name: 'main')]
     public function main(): Response
     {
-        $id = $this->tokenStorage->getToken()->getUserIdentifier();
+        $id = $this->tokenStorage->getToken()?->getUserIdentifier();
         $qrCodeUrl = $this->urlGenerator->generate(
             'qr_secret',
             [

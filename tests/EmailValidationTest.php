@@ -7,18 +7,26 @@ namespace App\Tests;
 use App\DTO\UpdateUserDto;
 use App\Repository\UserRepository;
 use App\Services\EncryptionService;
+use App\Services\UpdateUserService;
 use App\Services\UserService;
+use App\Validator\ConstrainUniqueEmail;
+use App\Validator\ConstrainUniqueEmailValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
+use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validation;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class EmailValidationTest extends TestCase
 {
-    private UserService $userService;
+    private UpdateUserService $updateUserService;
 
     protected function setUp(): void
     {
@@ -27,17 +35,49 @@ final class EmailValidationTest extends TestCase
         $mockEntityManager = $this->createMock(EntityManagerInterface::class);
         $mockTotpAuthenticator = $this->createMock(TotpAuthenticatorInterface::class);
         $mockEncryptionService = $this->createMock(EncryptionService::class);
-        $mockValidator = Validation::createValidatorBuilder()
+        $mockTranslator = $this->createMock(TranslatorInterface::class);
+        $tokenStorageMock = $this->createMock(TokenStorageInterface::class);
+        $factory = new class($mockUserRepository, $tokenStorageMock, $mockTranslator) implements ConstraintValidatorFactoryInterface {
+            public function __construct(
+                private UserRepository $userRepository,
+                private TokenStorageInterface $tokenStorage,
+                private TranslatorInterface $translator,
+            ) {
+            }
+
+            public function getInstance(Constraint $constraint): ConstraintValidatorInterface
+            {
+                if ($constraint::class === ConstrainUniqueEmail::class) {
+                    return new ConstrainUniqueEmailValidator(
+                        $this->userRepository,
+                        $this->tokenStorage,
+                        $this->translator
+                    );
+                }
+
+                /** @var class-string<ConstraintValidatorInterface> $class */
+                $class = $constraint->validatedBy();
+                return new $class();
+            }
+        };
+        $validator = Validation::createValidatorBuilder()
             ->enableAttributeMapping()
+            ->setConstraintValidatorFactory($factory)
             ->getValidator();
 
-        $this->userService = new UserService(
+        $userService = new UserService(
             $mockUserRepository,
             $mockPasswordHasher,
             $mockEntityManager,
             $mockTotpAuthenticator,
             $mockEncryptionService,
-            $mockValidator,
+            $mockTranslator,
+        );
+        $this->updateUserService = new UpdateUserService(
+            $validator,
+            $mockPasswordHasher,
+            $mockEntityManager,
+            $userService
         );
     }
 
@@ -51,6 +91,6 @@ final class EmailValidationTest extends TestCase
             null,
             null,
         );
-        $this->userService->updateUser(Uuid::fromString('0196158b-a5bf-7f06-96be-ec13aa7f6902'), $updateUserDto);
+        $this->updateUserService->updateUser(Uuid::fromString('0196158b-a5bf-7f06-96be-ec13aa7f6902'), $updateUserDto);
     }
 }

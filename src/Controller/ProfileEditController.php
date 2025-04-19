@@ -33,10 +33,8 @@ class ProfileEditController extends AbstractController
     public function edit(Uuid $id, Request $request): Response
     {
         $user = $this->userService->getUserById($id);
-        /** @var ?string $errorMessage */
-        $errorMessage = $request->query->get('errorMessage');
-        /** @var ?string $invalidValue */
-        $invalidValue = $request->query->get('invalidValue');
+        $request->query->get('errorMessage');
+        $request->query->get('invalidValue');
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
         ]);
@@ -45,10 +43,15 @@ class ProfileEditController extends AbstractController
     #[Route(path: '/edit/{id}', name: 'editUser', methods: ['POST'])]
     public function editUser(Uuid $id, Request $request): Response
     {
-        $clientId = $this->tokenStorage->getToken()->getUserIdentifier();
+        $clientId = $this->tokenStorage->getToken()?->getUserIdentifier();
+        if ($clientId === null) {
+            return new Response(status: 401);
+        }
+
         if (! Uuid::fromString($clientId) ->equals($id)) {
             return new Response(status: 403);
         }
+
         /** @var string $email */
         $email = $request->request->get('email');
         /** @var ?string $passwordRaw */
@@ -77,6 +80,7 @@ class ProfileEditController extends AbstractController
                 'errors' => $e->getViolations(),
             ]);
         }
+
         $this->addFlash('success', $this->translator->trans('success.update'));
         return $this->redirectToRoute('edit', [
             'id' => $id,

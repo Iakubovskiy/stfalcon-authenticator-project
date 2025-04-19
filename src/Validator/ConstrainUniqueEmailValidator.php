@@ -37,7 +37,7 @@ class ConstrainUniqueEmailValidator extends ConstraintValidator
         }
 
         $tokenUserId = $this->tokenStorage->getToken()?->getUserIdentifier();
-        if($tokenUserId !== null) {
+        if ($tokenUserId !== null) {
             $tokenUser = $this->userRepository->find($tokenUserId);
             if ($tokenUser !== null && $tokenUser->getEmail() === $value) {
                 return;

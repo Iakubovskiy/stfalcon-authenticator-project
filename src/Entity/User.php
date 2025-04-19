@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use LogicException;
 use App\Repository\UserRepository;
 use App\Services\EncryptionService;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use RuntimeException;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfiguration;
 use Scheb\TwoFactorBundle\Model\Totp\TotpConfigurationInterface;
 use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
@@ -29,16 +31,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(type: UuidType::NAME)]
     private Uuid $id;
 
-    /**
-     * @var non-empty-string
-     */
     #[ORM\Column(length: 180, unique: true)]
     private string $email;
 
     /**
      * @var list<string> The user roles
      */
-    #[ORM\Column( type: 'json', options: ['jsonb' => true])]
+    #[ORM\Column(type: Types::JSON, options: [
+        'jsonb' => true,
+    ])]
     private array $roles = ['ROLE_USER'];
 
     /**
@@ -58,11 +59,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function __construct(?Uuid $id = null)
     {
-        if($id !== null) {
-            $this->id = $id;
-        } else{
-            $this->id = Uuid::v7();
-        }
+        $this->id = $id instanceof Uuid ? $id : Uuid::v7();
     }
 
     public function getId(): Uuid
@@ -89,7 +86,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     public function getUserIdentifier(): string
     {
-        return $this->id->toString();
+        $id = $this->id->toString();
+        if (empty($id)) {
+            throw new LogicException("id can't be empty");
+        }
+
+        return $id;
     }
 
     /**
@@ -167,7 +169,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         $key = $_ENV['ENCRYPTION_KEY'];
         $encryptionService = new EncryptionService($key);
         return new TotpConfiguration(
-            $encryptionService->decryptSecret($this->secretKey ?? throw new \RuntimeException('Secret key is not configured')),
+            $encryptionService->decryptSecret($this->secretKey ?? throw new RuntimeException('Secret key is not configured')),
             TotpConfiguration::ALGORITHM_SHA1,
             self::PERIOD,
             self::DIGITS

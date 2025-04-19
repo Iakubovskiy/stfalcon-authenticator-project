@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Validator;
 
+use Attribute;
 use Symfony\Component\Validator\Attribute\HasNamedArguments;
 use Symfony\Component\Validator\Constraint;
 
-#[\Attribute]
+#[Attribute]
 class ConstrainUniqueEmail extends Constraint
 {
     #[HasNamedArguments]
@@ -16,15 +17,6 @@ class ConstrainUniqueEmail extends Constraint
         mixed $payload = null,
     ) {
         parent::__construct([], $groups, $payload);
-    }
-
-    public function __sleep(): array
-    {
-        return array_merge(
-            [
-                'mode',
-            ]
-        );
     }
 
     public function validatedBy(): string

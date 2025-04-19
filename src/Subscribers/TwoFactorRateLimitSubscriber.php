@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Subscribers;
 
+use RuntimeException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -30,8 +31,9 @@ readonly class TwoFactorRateLimitSubscriber
 
         $ip = $request->getClientIp();
         if ($ip === null) {
-            throw new \RuntimeException($this->translator->trans('errors.ip_not_found'));
+            throw new RuntimeException($this->translator->trans('errors.ip_not_found'));
         }
+
         $limiter = $this->limiter->create($ip);
 
         $rateLimit = $limiter->consume(1);
