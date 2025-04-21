@@ -27,7 +27,7 @@ final class ValidateEmailTest extends KernelTestCase
             null,
             null,
         );
-        $id = Uuid::fromString('0196158b-a5bf-7f06-96be-ec13aa7f6902');
+        $id = Uuid::fromString('017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3');
         $this->assertTrue(method_exists($updateUserService, 'updateUser'), 'updateUser method not found');
         $updateUserService->updateUser($id, $updateUserDto);
 
