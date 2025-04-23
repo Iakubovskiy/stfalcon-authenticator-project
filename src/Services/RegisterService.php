@@ -8,6 +8,7 @@ use App\DTO\RegisterDto;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -21,14 +22,18 @@ readonly class RegisterService
 
     }
 
-    public function register(RegisterDto $registerDto): void
+    public function register(RegisterDto $registerDto, Uuid $id = null): void
     {
         $constraintViolationList = $this->validator->validate($registerDto);
         if (count($constraintViolationList) > 0) {
             throw new ValidationFailedException($registerDto, $constraintViolationList);
         }
 
-        $user = new User();
+        if (!$id instanceof Uuid) {
+            $id = Uuid::v7();
+        }
+
+        $user = new User($id);
         $user->setEmail($registerDto->email);
 
         $hashPassword = $this->userPasswordHasher->hashPassword($user, $registerDto->password);

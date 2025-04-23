@@ -11,10 +11,10 @@ class UpdateUserDto
 {
     public function __construct(
         #[Assert\Email(
-            message: "The email '{{ value }}' is not a valid email.",
+            message: 'errors.not_valid_email',
             mode: Assert\Email::VALIDATION_MODE_STRICT
         )]
-        #[CustomValidator\ConstrainUniqueEmail]
+        #[CustomValidator\UniqueEmail]
         public ?string $email,
         public ?string $password,
         public ?string $photoPath

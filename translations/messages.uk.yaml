@@ -6,6 +6,7 @@ errors:
     to_many_attempts: Забагато спроб. Спробуйте пізніше.
     ip_not_found: IP not found
     not_unique_email: not unique email
+    not_valid_email: The email '{{ value }}' is not a valid email.
 success:
     update: Успішно оновлено
     register: Реєстрація успішна. Увійдіть у свій акаунт.

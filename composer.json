@@ -79,20 +79,19 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-    "ci:pack": [
-        "ci:ecs",
-        "ci:rector",
-        "ci:phpstan",
-        "ci:test",
-        "ci:cache-clear"
-    ],
-    "ci:ecs": "vendor/bin/ecs",
-    "ci:ecs-fix": "vendor/bin/ecs --fix",
-    "ci:rector": "vendor/bin/rector",
-    "ci:rector-dry": "vendor/bin/rector --dry-run",
-    "ci:phpstan": "vendor/bin/phpstan",
-    "ci:test": "vendor/bin/phpunit",
-    "ci:cache-clear": "bin/console cache:clear"
+        "ci:pack": [
+            "@ci:ecs",
+            "@ci:rector",
+            "@ci:phpstan",
+            "@ci:test"
+        ],
+        "ci:ecs": "vendor/bin/ecs",
+        "ci:ecs-fix": "vendor/bin/ecs --fix",
+        "ci:rector": "vendor/bin/rector",
+        "ci:rector-dry": "vendor/bin/rector --dry-run",
+        "ci:phpstan": "vendor/bin/phpstan",
+        "ci:test": "vendor/bin/phpunit",
+        "ci:cache-clear": "bin/console cache:clear"
 
     },
     "conflict": {

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Attribute\HasNamedArguments;
 use Symfony\Component\Validator\Constraint;
 
 #[Attribute]
-class ConstrainUniqueEmail extends Constraint
+class UniqueEmail extends Constraint
 {
     #[HasNamedArguments]
     public function __construct(

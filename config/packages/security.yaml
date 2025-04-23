@@ -14,15 +14,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        api_doc:
-            pattern: ^/api/doc
-            security: false
-        test:
-            pattern: '/api/'
-            security: false
-        qr:
-            pattern: '/qr-secret/'
-            security: false
         register:
             pattern: '/register'
             security: false
@@ -40,19 +31,11 @@ security:
             logout:
                 path: app_logout
                 target: login
-                # where to redirect after logout
-                # target: app_any_route
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/2fa/qr-secret/, roles: PUBLIC_ACCESS }
+        - { path: ^/2fa/enable, roles: ROLE_USER }
+        - { path: ^/2fa/disable, roles: ROLE_USER }
         - { path: ^/2fa, roles: IS_AUTHENTICATED_2FA_IN_PROGRESS }
         - { path: ^/, roles: ROLE_USER }
 

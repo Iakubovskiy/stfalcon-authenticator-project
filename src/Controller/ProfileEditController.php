@@ -52,12 +52,9 @@ class ProfileEditController extends AbstractController
             return new Response(status: 403);
         }
 
-        /** @var string $email */
-        $email = $request->request->get('email');
-        /** @var ?string $passwordRaw */
-        $passwordRaw = $request->request->get('password');
-        /** @var ?string $password */
-        $password = is_string($passwordRaw) ? $passwordRaw : null;
+        $email = $request->request->getString('email');
+        $passwordRaw = $request->request->getString('password');
+        $password = empty($passwordRaw) ? null : $passwordRaw;
         /** @var ?UploadedFile $profilePictureFile */
         $profilePictureFile = $request->files->get('profile_picture');
         $filePath = null;

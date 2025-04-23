@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class ConstrainUniqueEmailValidator extends ConstraintValidator
+class UniqueEmailValidator extends ConstraintValidator
 {
     public function __construct(
         private readonly UserRepository $userRepository,
@@ -24,7 +24,7 @@ class ConstrainUniqueEmailValidator extends ConstraintValidator
 
     public function validate(mixed $value, Constraint $constraint): void
     {
-        if (! ($constraint instanceof ConstrainUniqueEmail)) {
+        if (! ($constraint instanceof UniqueEmail)) {
             throw new UnexpectedTypeException($constraint, self::class);
         }
 

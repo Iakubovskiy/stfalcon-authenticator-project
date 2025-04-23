@@ -9,8 +9,8 @@ use App\Repository\UserRepository;
 use App\Services\EncryptionService;
 use App\Services\UpdateUserService;
 use App\Services\UserService;
-use App\Validator\ConstrainUniqueEmail;
-use App\Validator\ConstrainUniqueEmailValidator;
+use App\Validator\UniqueEmail;
+use App\Validator\UniqueEmailValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
@@ -47,8 +47,8 @@ final class EmailValidationTest extends TestCase
 
             public function getInstance(Constraint $constraint): ConstraintValidatorInterface
             {
-                if ($constraint::class === ConstrainUniqueEmail::class) {
-                    return new ConstrainUniqueEmailValidator(
+                if ($constraint::class === UniqueEmail::class) {
+                    return new UniqueEmailValidator(
                         $this->userRepository,
                         $this->tokenStorage,
                         $this->translator

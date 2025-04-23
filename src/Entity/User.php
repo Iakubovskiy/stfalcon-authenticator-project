@@ -57,9 +57,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(nullable: true)]
     private ?string $photoUrl = null;
 
-    public function __construct(?Uuid $id = null)
+    public function __construct(Uuid $id)
     {
-        $this->id = $id instanceof Uuid ? $id : Uuid::v7();
+        $this->id = $id;
     }
 
     public function getId(): Uuid

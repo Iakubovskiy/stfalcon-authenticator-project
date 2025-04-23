@@ -1,11 +1,11 @@
 ###> symfony/framework-bundle ###
 /.env.local.php
+/.env.local
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
 /vendor/
-/.env.dev
 phpstan.neon
 /phpunit.xml
 /.phpunit.cache/
@@ -16,3 +16,4 @@ phpstan.neon
 /compose.override.yaml
 /public/uploads
 /config/jwt/*.pem
+/.idea

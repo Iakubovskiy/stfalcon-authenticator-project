@@ -31,12 +31,9 @@ class RegisterController extends AbstractController
     #[Route('/register', name: 'register_process', methods: ['POST'])]
     public function registerProcess(Request $request): Response
     {
-        /** @var string $email */
-        $email = $request->request->get('email');
-        /** @var string $password */
-        $password = $request->request->get('password');
-        // string
-        $passwordConfirm = $request->request->get('password_confirm');
+        $email = $request->request->getString('email');
+        $password = $request->request->getString('password');
+        $passwordConfirm = $request->request->getString('password_confirm');
 
         if ($password !== $passwordConfirm) {
             $this->addFlash('error', $this->translator->trans('errors.passwords_do_not_match'));
@@ -47,14 +44,13 @@ class RegisterController extends AbstractController
         try {
             $this->registerService->register($registerDTO);
             $this->addFlash('success', $this->translator->trans('success.register'));
-
-            return $this->redirectToRoute('login');
-
         } catch (ValidationFailedException $e) {
             $errors = $e->getViolations();
             return $this->render('auth/register.html.twig', [
                 'errors' => $errors,
             ]);
         }
+
+        return $this->redirectToRoute('login');
     }
 }
