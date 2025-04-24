@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use App\Services\EncryptionService;
+use App\ValueObjects\Email;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -31,8 +32,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(type: UuidType::NAME)]
     private Uuid $id;
 
-    #[ORM\Column(length: 180, unique: true)]
-    private string $email;
+    #[ORM\Embedded]
+    private Email $email;
 
     /**
      * @var list<string> The user roles
@@ -69,12 +70,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getEmail(): string
     {
-        return $this->email;
+        return $this->email->asString();
     }
 
     public function setEmail(string $email): self
     {
-        $this->email = $email;
+        $this->email = Email::fromString($email);
 
         return $this;
     }
@@ -160,7 +161,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationUsername(): string
     {
-        return $this->email;
+        return $this->email->asString();
     }
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface

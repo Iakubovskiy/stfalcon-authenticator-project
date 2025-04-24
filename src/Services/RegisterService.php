@@ -29,7 +29,7 @@ readonly class RegisterService
             throw new ValidationFailedException($registerDto, $constraintViolationList);
         }
 
-        if (!$id instanceof Uuid) {
+        if (! $id instanceof Uuid) {
             $id = Uuid::v7();
         }
 

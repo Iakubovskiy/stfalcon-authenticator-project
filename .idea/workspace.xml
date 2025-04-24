@@ -4,37 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="fixture created and tests are running successfully">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="some changes from review">
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/real-estate-what-it-is-and-how-it-works-3305882-1f1ca22206274467862367e2dc59f25b-67fe41df9f978.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fixtures/TestUserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fixtures/UserFixture.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/RegisterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/RegisterService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/UniqueEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Validator/ConstrainUniqueEmailValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/UniqueEmailValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UpdateUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UpdateUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/UniqueEmail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/UniqueEmailValidator.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/UpdateEndpointTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/UpdateEndpointTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/messages.uk.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.uk.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +290,7 @@
       <workItem from="1745106790721" duration="2085000" />
       <workItem from="1745269776084" duration="3361000" />
       <workItem from="1745395287140" duration="1155000" />
-      <workItem from="1745396448321" duration="3096000" />
+      <workItem from="1745396448321" duration="18792000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -469,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745272815506</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="some changes from review">
+      <option name="closed" value="true" />
+      <created>1745399829643</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1745399829643</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +506,8 @@
     <MESSAGE value="user entity refactored, twig templates changed, validator corrected" />
     <MESSAGE value="quality tools used and tests fixed" />
     <MESSAGE value="fixture created and tests are running successfully" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixture created and tests are running successfully" />
+    <MESSAGE value="some changes from review" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes from review" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -41,9 +41,7 @@ readonly class UpdateUserService
         }
 
         $user = $this->userService->getUserById($id);
-        if ($updateUserDto->email !== null) {
-            $user->setEmail($updateUserDto->email);
-        }
+        $user->setEmail($updateUserDto->email);
 
         if ($updateUserDto->password !== null) {
             $hashed_password = $this->userPasswordHasher->hashPassword($user, $updateUserDto->password);

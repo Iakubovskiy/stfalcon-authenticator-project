@@ -6,7 +6,7 @@ namespace App\Tests;
 
 use App\DTO\UpdateUserDto;
 use App\Services\UpdateUserService;
-use RuntimeException;
+use InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Uid\Uuid;
 
@@ -19,8 +19,8 @@ final class ValidateEmailTest extends KernelTestCase
         $container = static::getContainer();
 
         $updateUserService = $container->get(UpdateUserService::class);
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageMatches('/not a valid email/');
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('/not a valid email address/');
 
         $updateUserDto = new UpdateUserDto(
             'testtest.com',
