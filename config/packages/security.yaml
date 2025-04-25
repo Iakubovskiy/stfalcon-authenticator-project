@@ -14,9 +14,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        register:
-            pattern: '/register'
-            security: false
         main:
             lazy: true
             provider: app_user_provider
@@ -33,6 +30,7 @@ security:
                 target: login
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/2fa/qr-secret/, roles: PUBLIC_ACCESS }
         - { path: ^/2fa/enable, roles: ROLE_USER }
         - { path: ^/2fa/disable, roles: ROLE_USER }

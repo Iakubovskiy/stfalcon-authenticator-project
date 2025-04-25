@@ -17,7 +17,7 @@ final class ValidateEmailTest extends KernelTestCase
         self::bootKernel();
 
         $container = static::getContainer();
-
+        /** @var UpdateUserService $updateUserService */
         $updateUserService = $container->get(UpdateUserService::class);
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessageMatches('/not a valid email address/');
@@ -28,7 +28,6 @@ final class ValidateEmailTest extends KernelTestCase
             null,
         );
         $id = Uuid::fromString('017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3');
-        $this->assertTrue(method_exists($updateUserService, 'updateUser'), 'updateUser method not found');
         $updateUserService->updateUser($id, $updateUserDto);
 
     }

@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Uid\Uuid;
 
-final class UpdateEndpointTest extends WebTestCase
+final class ProfileEditTest extends WebTestCase
 {
     public function testEditionOfAnotherUserIsProhibited(): void
     {
@@ -33,7 +33,7 @@ final class UpdateEndpointTest extends WebTestCase
             ],
         );
 
-        $this->assertResponseStatusCodeSame(403);
+        self::assertResponseStatusCodeSame(403);
     }
 
     public function testEmailUpdate(): void
@@ -57,6 +57,30 @@ final class UpdateEndpointTest extends WebTestCase
             ],
         );
 
-        $this->assertResponseRedirects('/edit/017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3');
+        self::assertResponseRedirects('/edit/017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3');
+    }
+
+    public function testEditPage(): void
+    {
+        $client = self::createClient();
+        /** @var UserRepository $userRepository */
+        $userRepository = self::getContainer()->get(UserRepository::class);
+        $user = $userRepository->find(Uuid::fromString('017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3'));
+        if ($user === null) {
+            throw new RuntimeException('No user found');
+        }
+
+        $client->loginUser($user);
+        $crawler = $client->request(
+            Request::METHOD_GET,
+            '/edit/017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3',
+        );
+
+        self::assertResponseIsSuccessful();
+        $inputs = $crawler->filter('input[name="email"][value="test@example.com"]');
+        self::assertGreaterThan(
+            0,
+            $inputs,
+        );
     }
 }
