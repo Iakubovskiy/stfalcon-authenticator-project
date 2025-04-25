@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use App\Controller\MainPageController;
 use App\Repository\UserRepository;
 use App\Services\UpdateUserService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Uid\Uuid;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
-class MainControllerTest extends WebTestCase
+#[CoversClass(MainPageController::class)]
+final class MainControllerTest extends WebTestCase
 {
     public function testMainPage(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         /** @var UserRepository $userRepository */
         $userRepository = self::getContainer()->get(UserRepository::class);
         /** @var UpdateUserService $updateUserService */
@@ -27,7 +29,6 @@ class MainControllerTest extends WebTestCase
         if ($user === null) {
             throw new RuntimeException('No user found');
         }
-        /**@var TranslatorInterface $translator*/
 
         $client->loginUser($user);
         $crawler = $client->request(
@@ -37,9 +38,6 @@ class MainControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         $images = $crawler->filter('img[alt="QR-код для автентифікатора"]');
-        self::assertGreaterThan(
-            0,
-            $images,
-        );
+        $this->assertGreaterThan(0, $images);
     }
 }

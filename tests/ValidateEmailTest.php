@@ -7,16 +7,18 @@ namespace App\Tests;
 use App\DTO\UpdateUserDto;
 use App\Services\UpdateUserService;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Uid\Uuid;
 
+#[CoversClass(UpdateUserService::class)]
 final class ValidateEmailTest extends KernelTestCase
 {
     public function testEmailValidation(): void
     {
         self::bootKernel();
 
-        $container = static::getContainer();
+        $container = self::getContainer();
         /** @var UpdateUserService $updateUserService */
         $updateUserService = $container->get(UpdateUserService::class);
         $this->expectException(InvalidArgumentException::class);

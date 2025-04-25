@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use App\Controller\ProfileEditController;
 use App\Repository\UserRepository;
+use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Uid\Uuid;
 
+#[CoversClass(ProfileEditController::class)]
 final class ProfileEditTest extends WebTestCase
 {
     public function testEditionOfAnotherUserIsProhibited(): void
@@ -78,9 +81,6 @@ final class ProfileEditTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         $inputs = $crawler->filter('input[name="email"][value="test@example.com"]');
-        self::assertGreaterThan(
-            0,
-            $inputs,
-        );
+        $this->assertGreaterThan(0, $inputs);
     }
 }

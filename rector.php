@@ -7,6 +7,7 @@ use Rector\Config\RectorConfig;
 use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 
 return RectorConfig::configure()
@@ -24,6 +25,7 @@ return RectorConfig::configure()
          RenameVariableToMatchMethodCallReturnTypeRector::class,
          CatchExceptionNameMatchingTypeRector::class,
          DisallowedEmptyRuleFixerRector::class,
+         PreferPHPUnitThisCallRector::class,
      ]
     )
     ->withSkip([

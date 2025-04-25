@@ -6,8 +6,10 @@ namespace App\Tests;
 
 use App\ValueObjects\Email;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Email::class)]
 final class EmailValidationTest extends TestCase
 {
     protected function setUp(): void
