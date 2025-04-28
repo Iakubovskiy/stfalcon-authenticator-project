@@ -12,14 +12,9 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20250410163340 extends AbstractMigration
 {
-    public function getDescription(): string
-    {
-        return '';
-    }
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
             ALTER TABLE "user" ADD last_login TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL
         SQL);
@@ -27,10 +22,6 @@ final class Version20250410163340 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql(<<<'SQL'
-            CREATE SCHEMA public
-        SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE "user" DROP last_login
         SQL);

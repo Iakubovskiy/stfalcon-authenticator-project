@@ -13,6 +13,9 @@ readonly class RegisterDto
         public string $email,
         #[Assert\NotBlank]
         public string $password,
+        #[Assert\NotBlank]
+        #[Assert\EqualTo(propertyPath: 'password')]
+        public string $passwordConfirmation,
     ) {
     }
 }

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Carbon\CarbonImmutable;
+use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Attribute\Route;
@@ -17,6 +20,7 @@ class MainPageController extends AbstractController
         private readonly UriSigner $uriSigner,
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly TokenStorageInterface $tokenStorage,
+        private readonly ClockInterface $clock,
     ) {
 
     }
@@ -25,14 +29,15 @@ class MainPageController extends AbstractController
     public function main(): Response
     {
         $id = $this->tokenStorage->getToken()?->getUserIdentifier();
+        $expireAt = $this->clock->now()->add(new DateInterval("PT10M"))->getTimestamp();
         $qrCodeUrl = $this->urlGenerator->generate(
             'qr_secret',
             [
                 'id' => $id,
+                'eat' => $expireAt,
             ],
             referenceType: UrlGeneratorInterface::ABSOLUTE_URL
         );
-
         $signedUrl = $this->uriSigner->sign($qrCodeUrl);
         return $this->render(
             'main.html.twig',

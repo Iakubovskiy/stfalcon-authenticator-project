@@ -35,12 +35,7 @@ class RegisterController extends AbstractController
         $password = $request->request->getString('password');
         $passwordConfirm = $request->request->getString('password_confirm');
 
-        if ($password !== $passwordConfirm) {
-            $this->addFlash('error', $this->translator->trans('errors.passwords_do_not_match'));
-            return $this->redirectToRoute('register');
-        }
-
-        $registerDTO = new RegisterDTO($email, $password);
+        $registerDTO = new RegisterDTO($email, $password, $passwordConfirm);
         try {
             $this->registerService->register($registerDTO);
             $this->addFlash('success', $this->translator->trans('success.register'));

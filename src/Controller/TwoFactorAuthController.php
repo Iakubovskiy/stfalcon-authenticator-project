@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Services\UserService;
+use Carbon\CarbonImmutable;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\UriSigner;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -24,6 +27,7 @@ class TwoFactorAuthController extends AbstractController
         private readonly UriSigner $uriSigner,
         private readonly TranslatorInterface $translator,
         private readonly TokenStorageInterface $tokenStorage,
+        private readonly ClockInterface $clock,
     ) {
 
     }
@@ -42,7 +46,7 @@ class TwoFactorAuthController extends AbstractController
         if ($this->tokenStorage->getToken() instanceof TokenInterface) {
             $id = Uuid::fromString($this->tokenStorage->getToken()->getUserIdentifier());
         } else {
-            return new Response(status: 401);
+            return new Response(status: Response::HTTP_UNAUTHORIZED);
         }
 
         $success = $this->userService->disableTwoFactorAuthentication($id, $password);
@@ -63,7 +67,7 @@ class TwoFactorAuthController extends AbstractController
         if ($this->tokenStorage->getToken() instanceof TokenInterface) {
             $id = Uuid::fromString($this->tokenStorage->getToken()->getUserIdentifier());
         } else {
-            return new Response(status: 401);
+            return new Response(status: Response::HTTP_UNAUTHORIZED);
         }
 
         $success = $this->userService->enableTwoFactorAuthentication($id, $password);
@@ -76,13 +80,20 @@ class TwoFactorAuthController extends AbstractController
         return $this->redirectToRoute('main');
     }
 
-    #[Route('/2fa/qr-secret/{id}', name: 'qr_secret', methods: ['GET'])]
-    public function qrSecret(Uuid $id, Request $request): Response
+    #[Route('/2fa/qr-secret/{id}', name: 'qr_secret', defaults: ['eat'], methods: ['GET'])]
+    public function qrSecret(Uuid $id, Request $request, #[MapQueryParameter('eat')] int $expirationTimestamp): Response
     {
+        $expireAt = CarbonImmutable::createFromTimestamp($expirationTimestamp);
+        if($expireAt->lessThan($this->clock->now())){
+            return new Response(
+                content: 'expired',
+                status: Response::HTTP_FORBIDDEN
+            );
+        }
         $isValid = $this->uriSigner->checkRequest($request);
         if (! $isValid) {
             return new Response(
-                status: 403
+                status: Response::HTTP_FORBIDDEN
             );
         }
 

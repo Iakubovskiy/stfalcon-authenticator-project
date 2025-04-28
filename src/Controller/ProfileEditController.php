@@ -30,11 +30,9 @@ class ProfileEditController extends AbstractController
     }
 
     #[Route(path: '/edit/{id}', name: 'edit', methods: ['GET'])]
-    public function edit(Uuid $id, Request $request): Response
+    public function edit(Uuid $id): Response
     {
         $user = $this->userService->getUserById($id);
-        $request->query->get('errorMessage');
-        $request->query->get('invalidValue');
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
         ]);
@@ -45,11 +43,11 @@ class ProfileEditController extends AbstractController
     {
         $clientId = $this->tokenStorage->getToken()?->getUserIdentifier();
         if ($clientId === null) {
-            return new Response(status: 401);
+            return new Response(status: Response::HTTP_UNAUTHORIZED);
         }
 
         if (! Uuid::fromString($clientId) ->equals($id)) {
-            return new Response(status: 403);
+            return new Response(status: Response::HTTP_FORBIDDEN);
         }
 
         $email = $request->request->getString('email');

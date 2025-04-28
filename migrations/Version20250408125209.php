@@ -12,14 +12,9 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20250408125209 extends AbstractMigration
 {
-    public function getDescription(): string
-    {
-        return '';
-    }
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
             CREATE TABLE "user" (id UUID NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, secret_key VARCHAR(255) NOT NULL, two_factor_authentication_enabled BOOLEAN NOT NULL, PRIMARY KEY(id))
         SQL);
@@ -33,10 +28,6 @@ final class Version20250408125209 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql(<<<'SQL'
-            CREATE SCHEMA public
-        SQL);
         $this->addSql(<<<'SQL'
             DROP TABLE "user"
         SQL);

@@ -38,8 +38,19 @@
         {% endif %}
 
 
+        {% set passworConfirmationdError = null %}
+        {% for error in errors ?? [] %}
+            {% if error.propertyPath == 'passwordConfirmation' %}
+                {% set passworConfirmationdError = error %}
+            {% endif %}
+        {% endfor %}
         <label for="password_confirm">{{ 'twig.register_form.password_confirmation' | trans }}</label>
         <input type="password" id="password_confirm" name="password_confirm" required>
+        {% if passworConfirmationdError %}
+            <div class="alert alert-danger" role="alert">
+                {{ passworConfirmationdError.message }}
+            </div>
+        {% endif %}
 
         <button type="submit" class="mt-4">{{ 'twig.register_form.register' | trans }}</button>
     </form>
