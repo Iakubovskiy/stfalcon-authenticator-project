@@ -84,12 +84,13 @@ class TwoFactorAuthController extends AbstractController
     public function qrSecret(Uuid $id, Request $request, #[MapQueryParameter('eat')] int $expirationTimestamp): Response
     {
         $expireAt = CarbonImmutable::createFromTimestamp($expirationTimestamp);
-        if($expireAt->lessThan($this->clock->now())){
+        if ($expireAt->lessThan($this->clock->now())) {
             return new Response(
                 content: 'expired',
                 status: Response::HTTP_FORBIDDEN
             );
         }
+
         $isValid = $this->uriSigner->checkRequest($request);
         if (! $isValid) {
             return new Response(

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Carbon\CarbonImmutable;
 use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Clock\ClockInterface;
@@ -29,7 +28,7 @@ class MainPageController extends AbstractController
     public function main(): Response
     {
         $id = $this->tokenStorage->getToken()?->getUserIdentifier();
-        $expireAt = $this->clock->now()->add(new DateInterval("PT10M"))->getTimestamp();
+        $expireAt = $this->clock->now()->add(new DateInterval('PT10M'))->getTimestamp();
         $qrCodeUrl = $this->urlGenerator->generate(
             'qr_secret',
             [

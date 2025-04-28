@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use Carbon\CarbonImmutable;
 use App\Controller\TwoFactorAuthController;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -17,7 +18,6 @@ use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\Clock\Test\ClockSensitiveTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Uid\Uuid;
 
@@ -25,6 +25,7 @@ use Symfony\Component\Uid\Uuid;
 final class TwoFactorTest extends WebTestCase
 {
     use ClockSensitiveTrait;
+
     public function testDisableTwoFactor(): void
     {
         $client = self::createClient();
@@ -113,7 +114,7 @@ final class TwoFactorTest extends WebTestCase
     {
         $client = self::createClient();
 
-        self::mockTime(new DateTimeImmutable('2025-04-25 15:25:00+03:00'));
+        self::mockTime(CarbonImmutable::parse('2025-04-25 15:25:00+03:00'));
 
         $client->request(
             Request::METHOD_GET,
@@ -131,7 +132,7 @@ final class TwoFactorTest extends WebTestCase
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
         /** @var ClockInterface $clock */
         $clock = self::getContainer()->get(ClockInterface::class);
-        $expireAt = $clock->now()->add(new DateInterval("PT10M"))->getTimestamp();
+        $expireAt = $clock->now()->add(new DateInterval('PT10M'))->getTimestamp();
 
         $qrCodeUrl = $urlGenerator->generate(
             'qr_secret',
@@ -154,7 +155,7 @@ final class TwoFactorTest extends WebTestCase
     {
         $client = self::createClient();
 
-        self::mockTime(new DateTimeImmutable('2025-05-25 15:25:00+03:00'));
+        self::mockTime(CarbonImmutable::parse('2025-05-25 15:25:00+03:00'));
 
         $client->request(
             Request::METHOD_GET,

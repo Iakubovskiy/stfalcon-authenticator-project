@@ -9,7 +9,6 @@ use App\Services\RegisterService;
 use App\Services\UserService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use RuntimeException;
 use Symfony\Component\Uid\Uuid;
 
 class UserFixture extends Fixture
