@@ -4,42 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="tried to change structure">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="structure changed, some files are named properly">
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Entity/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Email/Email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Support/UserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Support/UserFixture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Support/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Support/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Validator/UniqueEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Email/Validator/UniqueEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Validator/UniqueEmailValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Email/Validator/UniqueEmailValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/Subscribers/LoginSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/Subscribers/LoginSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/TwoFactorLogin/EncryptionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/EncryptionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/TwoFactorLogin/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/TwoFactorAuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/TwoFactorLogin/TwoFactorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/TwoFactorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Login/UpdateLastLoginService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/UpdateLastLoginService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/EditProfile/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/EditProfile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/EditProfile/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/EditProfile/UpdateUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/MainPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Register/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Register/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Register/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Register/RegisterDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Register/RegisterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Register/RegisterService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Email/Test/EmailValidationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/LoginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/Test/LoginTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MainControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/Test/MainControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ProfileEditTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/Test/ProfileEditTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RegisterTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Register/Test/RegisterTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TwoFactorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Test/TwoFactorTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/UniqueEmailValidationTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ValidateEmailTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +266,7 @@
       <workItem from="1745269776084" duration="3361000" />
       <workItem from="1745395287140" duration="1155000" />
       <workItem from="1745396448321" duration="41637000" />
-      <workItem from="1745832677756" duration="29440000" />
+      <workItem from="1745832677756" duration="30003000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -534,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745926269252</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="structure changed, some files are named properly">
+      <option name="closed" value="true" />
+      <created>1745933435762</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1745933435762</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="last login + rate limit" />
     <MESSAGE value="secret encryption" />
     <MESSAGE value="standards met and changes made" />
     <MESSAGE value="unit validation test" />
@@ -577,7 +550,8 @@
     <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used" />
     <MESSAGE value="not necessary migrations deleted, new tests added, updateUserService was split" />
     <MESSAGE value="tried to change structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="tried to change structure" />
+    <MESSAGE value="structure changed, some files are named properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="structure changed, some files are named properly" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
