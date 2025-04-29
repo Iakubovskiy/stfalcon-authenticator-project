@@ -2,17 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\User\Profile;
 
 use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\UriSigner;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
+#[AsController]
 class MainPageController extends AbstractController
 {
     public function __construct(

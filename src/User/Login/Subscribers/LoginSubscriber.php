@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Subscribers;
+namespace App\User\Login\Subscribers;
 
-use App\Entity\User;
-use App\Services\UpdateLastLoginService;
+use App\User\Domain\Entity\User;
+use App\User\Login\UpdateLastLoginService;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Security\Http\Event\LoginSuccessEvent;
 

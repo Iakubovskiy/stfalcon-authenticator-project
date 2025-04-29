@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\DTO;
+namespace App\User\Profile\EditProfile;
 
-use App\Validator as CustomValidator;
+use App\User\Domain\Validator\UniqueEmail;
 use Symfony\Component\Validator\Constraints as Assert;
 
 readonly class UpdateUserDto
 {
     public function __construct(
         #[Assert\NotBlank]
-        #[CustomValidator\UniqueEmail]
+        #[UniqueEmail]
         public string $email,
         public ?string $password,
         public ?string $photoPath

@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\User\Domain\Entity;
 
-use App\Repository\UserRepository;
-use App\Services\EncryptionService;
-use App\ValueObjects\Email;
+use App\User\Domain\Support\UserRepository;
+use App\User\Login\TwoFactorLogin\EncryptionService;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

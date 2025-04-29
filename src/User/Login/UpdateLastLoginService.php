@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\User\Login;
 
-use App\Repository\UserRepository;
+use App\User\Domain\Support\UserRepository;
 use Carbon\CarbonImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Uid\Uuid;

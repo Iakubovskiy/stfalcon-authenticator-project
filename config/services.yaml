@@ -28,7 +28,7 @@ services:
 #    
 #    App\Subscribers\LoginSubscriber:
 #        arguments:
-#            $userService: '@App\Services\UserService'
+#            $userService: '@App\Services\TwoFactorService'
 #        tags: [ 'kernel.event_subscriber' ]
 
     # add more service definitions when explicit configuration is needed

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Subscribers;
+namespace App\User\Login\Subscribers;
 
 use RuntimeException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;

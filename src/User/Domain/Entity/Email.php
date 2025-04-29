@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ValueObjects;
+namespace App\User\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;

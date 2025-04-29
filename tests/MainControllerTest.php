@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\Controller\MainPageController;
-use App\Entity\User;
-use App\Repository\UserRepository;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Support\UserRepository;
+use App\User\Profile\MainPageController;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;

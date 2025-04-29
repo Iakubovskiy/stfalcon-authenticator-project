@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\Controller\LoginController;
-use App\Repository\UserRepository;
+use App\User\Domain\Support\UserRepository;
+use App\User\Login\LoginController;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\DTO;
+namespace App\User\Register;
 
-use App\Validator as CustomValidator;
+use App\User\Domain\Validator as CustomValidator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 readonly class RegisterDto

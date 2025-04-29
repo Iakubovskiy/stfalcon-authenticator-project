@@ -2,12 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\User\Profile\EditProfile;
 
-use App\DTO\UpdateUserDto;
-use App\Repository\UserRepository;
-use App\Services\FileService;
-use App\Services\UpdateUserService;
+use App\User\Domain\Support\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;

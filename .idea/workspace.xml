@@ -4,46 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="not necessary migrations deleted, new tests added, updateUserService was split">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250408125209.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250408125209.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250409091350.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250409091350.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250410163340.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250410163340.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250415105303.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250415105303.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250419104503.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250419104503.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250423101918.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250423101918.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250423104541.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250423104541.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250424131853.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250424131853.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250424132937.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250424132937.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/EncryptionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EncryptionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/FileService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/UpdateUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UpdateUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueObjects/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueObjects/Email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/MainPageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/EditProfile/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Register/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/TwoFactorLogin/TwoFactorAuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Register/RegisterDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/EditProfile/UpdateUserDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fixtures/UserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Support/UserFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Support/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/EncryptionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/TwoFactorLogin/EncryptionService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/EditProfile/FileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/RegisterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Register/RegisterService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UpdateLastLoginService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/UpdateLastLoginService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UpdateUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/EditProfile/UpdateUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/TwoFactorLogin/TwoFactorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/Subscribers/LoginSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Login/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/UniqueEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Validator/UniqueEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/UniqueEmailValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Validator/UniqueEmailValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueObjects/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Entity/Email.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/LoginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/LoginTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/MainControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MainControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ProfileEditTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ProfileEditTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/RegisterTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/RegisterTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TwoFactorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TwoFactorTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/UniqueEmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/UniqueEmailValidationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ValidateEmailTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ValidateEmailTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,6 +255,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/User" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/public" />
@@ -302,7 +298,7 @@
       <workItem from="1745269776084" duration="3361000" />
       <workItem from="1745395287140" duration="1155000" />
       <workItem from="1745396448321" duration="41637000" />
-      <workItem from="1745832677756" duration="18026000" />
+      <workItem from="1745832677756" duration="24676000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -520,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745842313896</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="not necessary migrations deleted, new tests added, updateUserService was split">
+      <option name="closed" value="true" />
+      <created>1745917750316</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1745917750316</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="login + 2 factor" />
     <MESSAGE value="QR code generated" />
     <MESSAGE value="last login + rate limit" />
     <MESSAGE value="secret encryption" />
@@ -563,7 +566,8 @@
     <MESSAGE value="code coverage added + quality tools used" />
     <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation" />
     <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used" />
-    <option name="LAST_COMMIT_MESSAGE" value="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used" />
+    <MESSAGE value="not necessary migrations deleted, new tests added, updateUserService was split" />
+    <option name="LAST_COMMIT_MESSAGE" value="not necessary migrations deleted, new tests added, updateUserService was split" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

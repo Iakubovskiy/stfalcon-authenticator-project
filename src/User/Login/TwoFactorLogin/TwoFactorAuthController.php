@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\User\Login\TwoFactorLogin;
 
-use App\Services\UserService;
 use Carbon\CarbonImmutable;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\ErrorCorrectionLevel;
@@ -23,7 +22,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class TwoFactorAuthController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService,
+        private readonly TwoFactorService $userService,
         private readonly UriSigner $uriSigner,
         private readonly TranslatorInterface $translator,
         private readonly TokenStorageInterface $tokenStorage,

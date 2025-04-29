@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\DTO\RegisterDto;
-use App\Validator\UniqueEmailValidator;
+use App\User\Domain\Validator\UniqueEmailValidator;
+use App\User\Register\RegisterDto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

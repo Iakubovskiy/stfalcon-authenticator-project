@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\User\Login\TwoFactorLogin;
 
-use App\Repository\UserRepository;
+use App\User\Domain\Support\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
 
-readonly class UserService
+readonly class TwoFactorService
 {
     public function __construct(
         private UserPasswordHasherInterface $userPasswordHasher,

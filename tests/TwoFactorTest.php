@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\Controller\TwoFactorAuthController;
-use App\Entity\User;
-use App\Repository\UserRepository;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Support\UserRepository;
+use App\User\Login\TwoFactorLogin\TwoFactorAuthController;
 use Carbon\CarbonImmutable;
 use DateInterval;
 use LogicException;

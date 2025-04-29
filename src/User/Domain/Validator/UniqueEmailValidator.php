@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Validator;
+namespace App\User\Domain\Validator;
 
-use App\Repository\UserRepository;
+use App\User\Domain\Support\UserRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Uid\Uuid;

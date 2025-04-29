@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\User\Register;
 
-use App\DTO\RegisterDto;
-use App\Services\RegisterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+#[AsController]
 class RegisterController extends AbstractController
 {
     public function __construct(
@@ -35,7 +35,7 @@ class RegisterController extends AbstractController
         $password = $request->request->getString('password');
         $passwordConfirm = $request->request->getString('password_confirm');
 
-        $registerDTO = new RegisterDTO($email, $password, $passwordConfirm);
+        $registerDTO = new RegisterDto($email, $password, $passwordConfirm);
         try {
             $this->registerService->register($registerDTO);
             $this->addFlash('success', $this->translator->trans('success.register'));

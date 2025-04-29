@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\Controller\ProfileEditController;
-use App\Entity\User;
-use App\Repository\UserRepository;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Support\UserRepository;
+use App\User\Profile\EditProfile\ProfileEditController;
 use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

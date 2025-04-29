@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\ValueObjects\Email;
+use App\User\Domain\Entity\Email;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Fixtures;
+namespace App\User\Domain\Support;
 
-use App\DTO\RegisterDto;
-use App\Services\RegisterService;
-use App\Services\UserService;
+use App\User\Login\TwoFactorLogin\TwoFactorService;
+use App\User\Register\RegisterDto;
+use App\User\Register\RegisterService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Uid\Uuid;
@@ -15,7 +15,7 @@ class UserFixture extends Fixture
 {
     public function __construct(
         private readonly RegisterService $registerService,
-        private readonly UserService $userService,
+        private readonly TwoFactorService $userService,
     ) {
 
     }

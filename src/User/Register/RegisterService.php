@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\User\Register;
 
-use App\DTO\RegisterDto;
-use App\Entity\User;
+use App\User\Domain\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;

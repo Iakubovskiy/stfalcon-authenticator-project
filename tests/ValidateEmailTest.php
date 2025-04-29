@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\DTO\UpdateUserDto;
-use App\Services\UpdateUserService;
+use App\User\Profile\EditProfile\UpdateUserDto;
+use App\User\Profile\EditProfile\UpdateUserService;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

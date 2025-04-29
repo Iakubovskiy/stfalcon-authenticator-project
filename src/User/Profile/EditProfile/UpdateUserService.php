@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\User\Profile\EditProfile;
 
-use App\DTO\UpdateUserDto;
-use App\Repository\UserRepository;
+use App\User\Domain\Support\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;

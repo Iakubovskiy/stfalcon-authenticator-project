@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Validator;
+namespace App\User\Domain\Validator;
 
 use Attribute;
 use Symfony\Component\Validator\Attribute\HasNamedArguments;
@@ -16,10 +16,5 @@ use Symfony\Component\Validator\Constraint;
         mixed $payload = null,
     ) {
         parent::__construct([], $groups, $payload);
-    }
-
-    public function validatedBy(): string
-    {
-        return self::class . 'Validator';
     }
 }
