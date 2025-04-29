@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests;
 
 use App\Controller\ProfileEditController;
+use App\Entity\User;
 use App\Repository\UserRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
@@ -20,10 +21,8 @@ final class ProfileEditTest extends WebTestCase
         $client = self::createClient();
         /** @var UserRepository $userRepository */
         $userRepository = self::getContainer()->get(UserRepository::class);
+        /** @var User $user */
         $user = $userRepository->find(Uuid::fromString('017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3'));
-        if ($user === null) {
-            throw new RuntimeException('No user found');
-        }
 
         $client->loginUser($user);
         $client->request(

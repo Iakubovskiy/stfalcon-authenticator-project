@@ -36,7 +36,7 @@ readonly class TwoFactorRateLimitSubscriber
 
         $limiter = $this->limiter->create($ip);
 
-        $rateLimit = $limiter->consume(1);
+        $rateLimit = $limiter->consume();
         if (! $rateLimit->isAccepted()) {
             throw new TooManyRequestsHttpException(null, $this->translator->trans('errors.to_many_attempts'));
         }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\DTO\UpdateUserDto;
-use Carbon\Carbon;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
@@ -18,18 +18,8 @@ readonly class UpdateUserService
         private ValidatorInterface $validator,
         private UserPasswordHasherInterface $userPasswordHasher,
         private EntityManagerInterface $entityManager,
-        private UserService $userService,
+        private UserRepository $userRepository,
     ) {
-
-    }
-
-    public function updateLastLogin(Uuid $uuid): void
-    {
-        $user = $this->userService->getUserById($uuid);
-        $user->setLastLogin(Carbon::now());
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
 
     }
 
@@ -40,7 +30,7 @@ readonly class UpdateUserService
             throw new ValidationFailedException($updateUserDto, $constraintViolationList);
         }
 
-        $user = $this->userService->getUserById($id);
+        $user = $this->userRepository->getUserById($id);
         $user->setEmail($updateUserDto->email);
 
         if ($updateUserDto->password !== null) {

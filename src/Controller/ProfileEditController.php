@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\UpdateUserDto;
+use App\Repository\UserRepository;
 use App\Services\FileService;
 use App\Services\UpdateUserService;
-use App\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +21,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ProfileEditController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService,
+        private readonly UserRepository $userRepository,
         private readonly UpdateUserService $updateUserService,
         private readonly TokenStorageInterface $tokenStorage,
         private readonly FileService $fileService,
@@ -32,7 +32,7 @@ class ProfileEditController extends AbstractController
     #[Route(path: '/edit/{id}', name: 'edit', methods: ['GET'])]
     public function edit(Uuid $id): Response
     {
-        $user = $this->userService->getUserById($id);
+        $user = $this->userRepository->getUserById($id);
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
         ]);
@@ -69,7 +69,7 @@ class ProfileEditController extends AbstractController
         try {
             $this->updateUserService->updateUser($id, $updateUserDto);
         } catch (ValidationFailedException $e) {
-            $user = $this->userService->getUserById($id);
+            $user = $this->userRepository->getUserById($id);
             return $this->render('edit/edit.html.twig', [
                 'user' => $user,
                 'errors' => $e->getViolations(),

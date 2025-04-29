@@ -6,11 +6,11 @@ namespace App\Services;
 
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-class EncryptionService
+readonly class EncryptionService
 {
     public function __construct(
         #[Autowire(env: 'ENCRYPTION_KEY')]
-        private readonly string $rawKey,
+        private string $rawKey,
     ) {
 
     }

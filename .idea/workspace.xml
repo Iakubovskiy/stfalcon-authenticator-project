@@ -4,42 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="">
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app.IXoBAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/information_schema.FNRwLQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/information_schema.FNRwLQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/app_test.8K-bRQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d498e22-6f66-433d-afba-c8cd38effa24/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250408125209.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250408125209.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250409091350.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250409091350.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250410163340.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250410163340.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250415105303.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250415105303.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250419104503.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250419104503.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250423101918.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250423101918.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20250423103310.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250423104541.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250423104541.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250424131853.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250424131853.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20250424132937.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20250424132937.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.dist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainPageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwoFactorAuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DTO/RegisterDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fixtures/UserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fixtures/UserFixture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/auth/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/auth/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/UpdateUserDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/EncryptionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EncryptionService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/FileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UpdateUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UpdateUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/LoginSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueObjects/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueObjects/Email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/EmailValidationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/EmailValidationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/LoginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/LoginTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MainControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MainControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ProfileEditTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ProfileEditTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/RegisterTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/RegisterTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TwoFactorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TwoFactorTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,6 +203,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -236,7 +240,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "Symfony2.SettingsForm",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -298,7 +302,7 @@
       <workItem from="1745269776084" duration="3361000" />
       <workItem from="1745395287140" duration="1155000" />
       <workItem from="1745396448321" duration="41637000" />
-      <workItem from="1745832677756" duration="7855000" />
+      <workItem from="1745832677756" duration="18026000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -500,7 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745580588800</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added expired at for qr + and some bugs fixed as well as scripts for database recreation">
+      <option name="closed" value="true" />
+      <created>1745842262758</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1745842262759</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used">
+      <option name="closed" value="true" />
+      <created>1745842313896</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1745842313896</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial + login and register" />
     <MESSAGE value="login + 2 factor" />
     <MESSAGE value="QR code generated" />
     <MESSAGE value="last login + rate limit" />
@@ -542,7 +561,9 @@
     <MESSAGE value="email value object created" />
     <MESSAGE value="test to almost all endpoints" />
     <MESSAGE value="code coverage added + quality tools used" />
-    <option name="LAST_COMMIT_MESSAGE" value="code coverage added + quality tools used" />
+    <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation" />
+    <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used" />
+    <option name="LAST_COMMIT_MESSAGE" value="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

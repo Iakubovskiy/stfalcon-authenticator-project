@@ -7,10 +7,8 @@ namespace App\Tests;
 use App\Controller\LoginController;
 use App\Repository\UserRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
-use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Uid\Uuid;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[CoversClass(LoginController::class)]
@@ -19,21 +17,14 @@ final class LoginTest extends WebTestCase
     public function testLoginPage(): void
     {
         $client = self::createClient();
-        /** @var UserRepository $userRepository */
-        $userRepository = self::getContainer()->get(UserRepository::class);
-        $user = $userRepository->find(Uuid::fromString('017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3'));
-
-        if ($user === null) {
-            throw new RuntimeException('No user found');
-        }
+        self::getContainer()->get(UserRepository::class);
 
         /** @var TranslatorInterface $translator */
         $translator = self::getContainer()->get(TranslatorInterface::class);
 
-        $client->loginUser($user);
         $client->request(
             Request::METHOD_GET,
-            'login',
+            '/login',
         );
 
         self::assertResponseIsSuccessful();

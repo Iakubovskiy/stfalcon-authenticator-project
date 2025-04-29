@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace App\ValueObjects;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Embeddable;
 use InvalidArgumentException;
 
-#[Embeddable]
-class Email
+#[ORM\Embeddable]
+readonly class Email
 {
     private function __construct(
-        #[ORM\Column]
-        private readonly string $email,
+        #[ORM\Column(unique: true)]
+        private string $email,
     ) {
         $this->ensureIsValidEmail($email);
     }

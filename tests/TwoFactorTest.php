@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use Carbon\CarbonImmutable;
 use App\Controller\TwoFactorAuthController;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Carbon\CarbonImmutable;
 use DateInterval;
-use DateTimeImmutable;
 use LogicException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
@@ -122,7 +121,7 @@ final class TwoFactorTest extends WebTestCase
         );
 
         self::assertResponseIsSuccessful();
-        self::assertResponseHeaderSame('content-type', 'image/png');
+        self::assertResponseHeaderSame('Content-Type', 'image/png');
     }
 
     public function testQrEndpointNotSingedUrl(): void

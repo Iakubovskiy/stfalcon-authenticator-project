@@ -80,19 +80,19 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "app:recreate-database-test": [
+        "app:recreate-database": [
             "bin/console doctrine:database:create --if-not-exists",
             "bin/console doctrine:migrations:migrate --no-interaction first",
             "bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration",
-            "bin/console doctrine:fixtures:load",
+            "bin/console doctrine:fixtures:load --no-interaction",
             "bin/console doctrine:schema:validate",
             "echo DONE @no_additional_args"
         ],
-        "test:recreate-database-test": [
+        "app:recreate-database-test": [
             "bin/console doctrine:database:create --if-not-exists -e test",
             "bin/console doctrine:migrations:migrate --no-interaction first -e test",
             "bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration -e test",
-            "bin/console doctrine:fixtures:load -e test",
+            "bin/console doctrine:fixtures:load -e test --no-interaction",
             "bin/console doctrine:schema:validate -e test",
             "echo DONE @no_additional_args"
         ],
@@ -122,6 +122,7 @@
         }
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^8.3",
         "doctrine/doctrine-fixtures-bundle": "^4.1",
         "phpstan/phpstan": "^2.1.12",
         "phpunit/phpunit": "^12.1.2",

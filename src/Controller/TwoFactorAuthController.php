@@ -80,7 +80,7 @@ class TwoFactorAuthController extends AbstractController
         return $this->redirectToRoute('main');
     }
 
-    #[Route('/2fa/qr-secret/{id}', name: 'qr_secret', defaults: ['eat'], methods: ['GET'])]
+    #[Route('/2fa/qr-secret/{id}', name: 'qr_secret', methods: ['GET'])]
     public function qrSecret(Uuid $id, Request $request, #[MapQueryParameter('eat')] int $expirationTimestamp): Response
     {
         $expireAt = CarbonImmutable::createFromTimestamp($expirationTimestamp);

@@ -7,7 +7,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use App\Services\EncryptionService;
 use App\ValueObjects\Email;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use LogicException;
@@ -32,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(type: UuidType::NAME)]
     private Uuid $id;
 
-    #[ORM\Embedded]
+    #[ORM\Embedded(columnPrefix: false)]
     private Email $email;
 
     /**
@@ -52,8 +52,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(nullable: true)]
     private ?string $secretKey;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private DateTime $lastLogin;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    private ?DateTimeImmutable $lastLogin;
 
     #[ORM\Column(nullable: true)]
     private ?string $photoUrl = null;
@@ -177,12 +177,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         );
     }
 
-    public function getLastLogin(): ?DateTime
+    public function getLastLogin(): ?DateTimeImmutable
     {
         return $this->lastLogin;
     }
 
-    public function setLastLogin(DateTime $lastLogin): self
+    public function setLastLogin(?DateTimeImmutable $lastLogin): self
     {
         $this->lastLogin = $lastLogin;
         return $this;

@@ -35,4 +35,7 @@ return [
         'dev' => true,
         'test' => true,
     ],
+    DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => [
+        'test' => true,
+    ],
 ];

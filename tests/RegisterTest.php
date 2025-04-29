@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests;
 
 use App\Controller\RegisterController;
+use App\Repository\UserRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ final class RegisterTest extends WebTestCase
 
         $client->request(
             Request::METHOD_GET,
-            'register',
+            '/register',
         );
 
         self::assertResponseIsSuccessful();
@@ -33,7 +34,7 @@ final class RegisterTest extends WebTestCase
         $client = self::createClient();
         $client->request(
             Request::METHOD_POST,
-            'register',
+            '/register',
             [
                 'email' => 'registration@test.com',
                 'password' => '123',
@@ -42,5 +43,13 @@ final class RegisterTest extends WebTestCase
         );
 
         self::assertResponseRedirects('/login');
+
+        /** @var UserRepository $userRepository */
+        $userRepository = self::getContainer()->get(UserRepository::class);
+        $user = $userRepository->findOneBy([
+            'email.email' => 'registration@test.com',
+        ]);
+
+        self::assertNotNull($user);
     }
 }
