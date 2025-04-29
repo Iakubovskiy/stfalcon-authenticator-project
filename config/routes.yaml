@@ -1,31 +1,5 @@
-controllerRegistration:
-    resource:
-        path: ../src/User/Register
-        namespace: App\User\Register
-    type: attribute
-    
-controllerUpdate:
-    resource:
-        path: ../src/User/Profile/EditProfile
-        namespace: App\User\Profile\EditProfile
-    type: attribute
-
-controllerMain:
-    resource:
-        path: ../src/User/Profile
-        namespace: App\User\Profile
-    type: attribute
-
-controllerLogin:
-    resource:
-        path: ../src/User/Login
-        namespace: App\User\Login
-    type: attribute
-
-controllerTwoFactor:
-    resource:
-        path: ../src/User/Login/TwoFactorLogin
-        namespace: App\User\Login\TwoFactorLogin
+controllers:
+    resource: '../src/**/{*Controller.php}'
     type: attribute
     
 2fa_login_check:
