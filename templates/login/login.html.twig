@@ -15,9 +15,9 @@
         <label for="password">{{ 'twig.login_form.password' | trans }}</label>
         <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
 
-{#        <input type="hidden" name="_csrf_token"#}
-{#               value="{{ csrf_token('authenticate') }}"#}
-{#        >#}
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
         <p class="mt-3">{{ 'twig.login_form.do_not_have_account.text' | trans }}<a href="{{ path('register') }}">{{ 'twig.login_form.do_not_have_account.register' | trans }}</a></p>
         <button class="btn btn-lg btn-primary mt-4" type="submit">
             {{ 'twig.login_form.sign_in' | trans }}

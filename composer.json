@@ -88,14 +88,6 @@
             "bin/console doctrine:schema:validate",
             "echo DONE @no_additional_args"
         ],
-        "app:recreate-database-test": [
-            "bin/console doctrine:database:create --if-not-exists -e test",
-            "bin/console doctrine:migrations:migrate --no-interaction first -e test",
-            "bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration -e test",
-            "bin/console doctrine:fixtures:load -e test --no-interaction",
-            "bin/console doctrine:schema:validate -e test",
-            "echo DONE @no_additional_args"
-        ],
         "ci:pack": [
             "@ci:ecs",
             "@ci:rector",

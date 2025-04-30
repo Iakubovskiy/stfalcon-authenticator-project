@@ -11,7 +11,7 @@ use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 
 return RectorConfig::configure()
-    ->withImportNames()
+    ->withImportNames(removeUnusedImports: true)
     ->withPaths([
         __DIR__ . '/config',
         __DIR__ . '/public',
