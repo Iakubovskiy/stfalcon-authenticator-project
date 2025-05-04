@@ -26,11 +26,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y \
+    libfreetype6-dev \
     libjpeg-dev \
     libpng-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+    && docker-php-ext-configure gd --with-freetype \
+    && docker-php-ext-install -j$(nproc) gd
 
 RUN set -eux; \
 	install-php-extensions \

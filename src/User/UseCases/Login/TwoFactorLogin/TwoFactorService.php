@@ -16,7 +16,6 @@ readonly class TwoFactorService
         private UserPasswordHasherInterface $userPasswordHasher,
         private EntityManagerInterface $entityManager,
         private TotpAuthenticatorInterface $totpAuthenticator,
-        private EncryptionService $encryptionService,
         private UserRepository $userRepository,
     ) {
     }
@@ -43,7 +42,7 @@ readonly class TwoFactorService
             return false;
         }
 
-        $user->setSecretKey($this->encryptionService->encryptSecret($this->totpAuthenticator->generateSecret()));
+        $user->setSecretKey($this->totpAuthenticator->generateSecret());
         $this->entityManager->persist($user);
         $this->entityManager->flush();
         return true;
@@ -52,6 +51,7 @@ readonly class TwoFactorService
     public function getUserQrCodeData(Uuid $uuid): string
     {
         $user = $this->userRepository->getUserById($uuid);
+        //        dd($this->totpAuthenticator->getQRContent($user));
         return $this->totpAuthenticator->getQRContent($user);
     }
 }

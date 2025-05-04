@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="login endpoint test added">
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="some changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/TwoFactorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/TwoFactorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +271,10 @@
       <workItem from="1745395287140" duration="1155000" />
       <workItem from="1745396448321" duration="41637000" />
       <workItem from="1745832677756" duration="30297000" />
-      <workItem from="1746017099970" duration="708000" />
+      <workItem from="1746017099970" duration="2617000" />
+      <workItem from="1746086568051" duration="1773000" />
+      <workItem from="1746102884699" duration="2311000" />
+      <workItem from="1746360628190" duration="7087000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -518,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745934800319</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1746018959923</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746018959923</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="standards met and changes made" />
     <MESSAGE value="unit validation test" />
     <MESSAGE value="integration validation test and application test for api&#10;also quality tools applied" />
     <MESSAGE value="uri signer implemented" />
@@ -561,7 +574,8 @@
     <MESSAGE value="tried to change structure" />
     <MESSAGE value="structure changed, some files are named properly" />
     <MESSAGE value="login endpoint test added" />
-    <option name="LAST_COMMIT_MESSAGE" value="login endpoint test added" />
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

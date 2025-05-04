@@ -6,7 +6,7 @@ namespace App\User;
 
 use App\User\Email\Email;
 use App\User\Support\UserRepository;
-use App\User\UseCases\Login\TwoFactorLogin\EncryptionService;
+use App\User\UseCases\Login\TwoFactorLogin\Types\SecretKey;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -49,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column]
     private string $password;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: SecretKey::NAME, nullable: true)]
     private ?string $secretKey;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
@@ -166,11 +166,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
-        /** @var string $key */
-        $key = $_ENV['ENCRYPTION_KEY'];
-        $encryptionService = new EncryptionService($key);
+        if ($this->secretKey === null) {
+            throw new RuntimeException();
+        }
+
         return new TotpConfiguration(
-            $encryptionService->decryptSecret($this->secretKey ?? throw new RuntimeException('Secret key is not configured')),
+            $this->secretKey,
             TotpConfiguration::ALGORITHM_SHA1,
             self::PERIOD,
             self::DIGITS
