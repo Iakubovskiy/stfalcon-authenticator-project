@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace App\User\UseCases\Login\TwoFactorLogin\Types;
 
+use App\User\SecretKey\SecretKey;
 use App\User\UseCases\Login\TwoFactorLogin\EncryptionService;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Override;
+use ReflectionClass;
 use Webmozart\Assert\Assert;
 
-class SecretKey extends Type
+class SecretKeyType extends Type
 {
     public const NAME = 'secret_key';
 
@@ -33,11 +35,12 @@ class SecretKey extends Type
             return null;
         }
 
-        Assert::string($value);
-        return $this->encryptionService->encryptSecret($value);
+        /** @var SecretKey $value */
+        Assert::isInstanceOf($value, SecretKey::class);
+        return $this->encryptionService->encryptSecret($value->getSecretKey());
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): string|null
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?SecretKey
     {
         /** @var string|null $value */
         $value = parent::convertToPHPValue($value, $platform);
@@ -48,7 +51,13 @@ class SecretKey extends Type
 
         Assert::string($value);
 
-        return $this->encryptionService->decryptSecret($value);
+        $reflectionClass = new ReflectionClass(SecretKey::class);
+        /** @var SecretKey $lazySecretGhost */
+        $lazySecretGhost = $reflectionClass->newLazyGhost(function (SecretKey $secretKey) use ($value): void {
+            $secretKey->__construct($this->encryptionService->decryptSecret($value));
+        });
+
+        return $lazySecretGhost;
     }
 
     public function getName(): string

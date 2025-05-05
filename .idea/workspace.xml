@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="some changes">
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="secret key type added">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/Test/ProfileEditTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/Test/ProfileEditTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/TwoFactorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/TwoFactorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Types/Bootstrap/SecretKeyBootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Types/Bootstrap/SecretKeyBootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Types/SecretKey.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Types/SecretKeyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/UseCases/Register/RegisterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Register/RegisterService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +283,7 @@
       <workItem from="1746017099970" duration="2617000" />
       <workItem from="1746086568051" duration="1773000" />
       <workItem from="1746102884699" duration="2311000" />
-      <workItem from="1746360628190" duration="7087000" />
+      <workItem from="1746360628190" duration="20869000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -532,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746018959923</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="secret key type added">
+      <option name="closed" value="true" />
+      <created>1746368702089</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1746368702089</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="unit validation test" />
     <MESSAGE value="integration validation test and application test for api&#10;also quality tools applied" />
     <MESSAGE value="uri signer implemented" />
     <MESSAGE value="quality tools used" />
@@ -575,7 +591,8 @@
     <MESSAGE value="structure changed, some files are named properly" />
     <MESSAGE value="login endpoint test added" />
     <MESSAGE value="some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
+    <MESSAGE value="secret key type added" />
+    <option name="LAST_COMMIT_MESSAGE" value="secret key type added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

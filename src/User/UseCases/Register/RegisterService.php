@@ -21,7 +21,7 @@ readonly class RegisterService
 
     }
 
-    public function register(RegisterDto $registerDto, Uuid $id = null): void
+    public function register(RegisterDto $registerDto, ?Uuid $id = null): void
     {
         $constraintViolationList = $this->validator->validate($registerDto);
         if (count($constraintViolationList) > 0) {

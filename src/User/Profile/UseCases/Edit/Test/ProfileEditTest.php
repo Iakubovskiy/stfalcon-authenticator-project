@@ -6,7 +6,6 @@ namespace App\User\Profile\UseCases\Edit\Test;
 
 use App\User\Profile\UseCases\Edit\ProfileEditController;
 use App\User\Support\UserRepository;
-use App\User\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -16,28 +15,6 @@ use Symfony\Component\Uid\Uuid;
 #[CoversClass(ProfileEditController::class)]
 final class ProfileEditTest extends WebTestCase
 {
-    public function testEditionOfAnotherUserIsProhibited(): void
-    {
-        $client = self::createClient();
-        /** @var UserRepository $userRepository */
-        $userRepository = self::getContainer()->get(UserRepository::class);
-        /** @var User $user */
-        $user = $userRepository->find(Uuid::fromString('017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3'));
-
-        $client->loginUser($user);
-        $client->request(
-            Request::METHOD_POST,
-            '/edit/0196158b-a5bf-7f06-96be-ec13aa7f6902',
-            [
-                'email' => 'test@test.com',
-                'password' => '',
-                'profile_picture' => '',
-            ],
-        );
-
-        self::assertResponseStatusCodeSame(403);
-    }
-
     public function testEmailUpdate(): void
     {
         $client = self::createClient();
@@ -51,7 +28,7 @@ final class ProfileEditTest extends WebTestCase
         $client->loginUser($user);
         $client->request(
             Request::METHOD_POST,
-            '/edit/017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3',
+            '/edit',
             [
                 'email' => 'test@test.com',
                 'password' => '',
@@ -59,7 +36,7 @@ final class ProfileEditTest extends WebTestCase
             ],
         );
 
-        self::assertResponseRedirects('/edit/017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3');
+        self::assertResponseRedirects('/edit');
     }
 
     public function testEditPage(): void
@@ -75,7 +52,7 @@ final class ProfileEditTest extends WebTestCase
         $client->loginUser($user);
         $crawler = $client->request(
             Request::METHOD_GET,
-            '/edit/017f22e2-79b0-7cc0-98a0-0c0f6a9b38d3',
+            '/edit',
         );
 
         self::assertResponseIsSuccessful();

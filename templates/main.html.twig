@@ -16,7 +16,7 @@
                 <p><strong>{{ 'twig.main.is_two_factor_enabled'|trans }}</strong> {{ app.user.totpAuthenticationEnabled ? 'twig.main.yes' | trans : 'twig.main.no' | trans }}</p>
             </div>
         </div>
-        <a class="btn w-auto btn-warning" href="edit/{{ app.user.id }}">Edit</a>
+        <a class="btn w-auto btn-warning" href="edit">Edit</a>
         <div class="text-center">
             {% if app.user.totpAuthenticationEnabled %}
                 <div class="text-center">

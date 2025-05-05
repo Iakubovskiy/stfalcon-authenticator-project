@@ -4,7 +4,7 @@ doctrine:
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
         types:
-            secret_key: 'App\User\UseCases\Login\TwoFactorLogin\Types\SecretKey'
+            secret_key: 'App\User\UseCases\Login\TwoFactorLogin\Types\SecretKeyType'
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true

@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\User;
 
 use App\User\Email\Email;
+use App\User\SecretKey\SecretKey;
 use App\User\Support\UserRepository;
-use App\User\UseCases\Login\TwoFactorLogin\Types\SecretKey;
+use App\User\UseCases\Login\TwoFactorLogin\Types\SecretKeyType;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -49,8 +50,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column]
     private string $password;
 
-    #[ORM\Column(type: SecretKey::NAME, nullable: true)]
-    private ?string $secretKey;
+    #[ORM\Column(type: SecretKeyType::NAME, nullable: true)]
+    private ?SecretKey $secretKey;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?DateTimeImmutable $lastLogin;
@@ -103,7 +104,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_values(array_unique($roles));
@@ -145,10 +145,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getSecretKey(): ?string
     {
-        return $this->secretKey;
+        return $this->secretKey?->getSecretKey();
     }
 
-    public function setSecretKey(?string $secretKey): self
+    public function setSecretKey(?SecretKey $secretKey): self
     {
         $this->secretKey = $secretKey;
         return $this;
@@ -156,7 +156,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function isTotpAuthenticationEnabled(): bool
     {
-        return $this->secretKey !== null;
+        return $this->secretKey instanceof SecretKey;
     }
 
     public function getTotpAuthenticationUsername(): string
@@ -166,12 +166,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
-        if ($this->secretKey === null) {
+        if (! $this->secretKey instanceof SecretKey) {
             throw new RuntimeException();
         }
 
         return new TotpConfiguration(
-            $this->secretKey,
+            $this->secretKey->getSecretKey(),
             TotpConfiguration::ALGORITHM_SHA1,
             self::PERIOD,
             self::DIGITS
