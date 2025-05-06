@@ -166,7 +166,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getTotpAuthenticationConfiguration(): ?TotpConfigurationInterface
     {
-        if (! $this->secretKey instanceof SecretKey) {
+        if ($this->secretKey === null) {
             throw new RuntimeException();
         }
 

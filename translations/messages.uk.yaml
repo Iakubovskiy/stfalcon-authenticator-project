@@ -23,6 +23,9 @@ twig:
         no: Ні
         enable_two_factor: Ввімкнути 2FA
         disable_two_factor: Вимкнути 2FA
+        no_last_login: No last login
+        last_login: Останній вхід
+        logout: Logout
         modal:
             title: Підтвердження пароля
             body: 'Для вимкнення двофакторної автентифікації введіть свій пароль:'
@@ -53,3 +56,5 @@ twig:
         save: Зберегти
         go_back: Повернутися
         
+    two_fa_login: 
+        enter_code: 'Введіть код:'

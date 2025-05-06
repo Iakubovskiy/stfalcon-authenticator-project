@@ -3,7 +3,7 @@
 
 {% block body %}
 <form method="post" action="{{ path('2fa_login_check') }}">
-    <label for="auth_code">Введіть код:</label>
+    <label for="auth_code">{{ 'twig.two_fa_login.enter_code' | trans }}</label>
     <input type="text" id="auth_code" name="_auth_code" autofocus />
     <button type="submit">{{ 'twig.confirm' | trans }}</button>
 </form>

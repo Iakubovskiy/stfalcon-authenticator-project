@@ -27,23 +27,48 @@
                     {{ 'twig.main.disable_two_factor' | trans }}
                 </button>
                 {% else %}
-                    <button class="btn btn-success w-auto mt-4" data-bs-toggle="modal" data-bs-target="#disable2FAModal">
+                    <button class="btn btn-success w-auto mt-4" data-bs-toggle="modal" data-bs-target="#enable2FAModal">
                         {{ 'twig.main.enable_two_factor' | trans }}
                     </button>
             {% endif %}
         </div>
         <div>
-            Останній вхід {{ app.user.lastLogin ? app.user.lastLogin|date('Y-m-d H:i:s', 'Europe/Kiev') : 'No last login' }}
+            {{ 'twig.main.last_login' | trans}} {{ app.user.lastLogin ? app.user.lastLogin|date('Y-m-d H:i:s', 'Europe/Kiev') : ('twig.main.no_last_login' | trans) }}
         </div>
-        <a href="{{ path('app_logout') }}" class="btn btn-danger w-auto mt-4">Logout</a>
+        <a href="{{ path('app_logout') }}" class="btn btn-danger w-auto mt-4">{{ 'twig.main.logout' | trans }}</a>
+        <div class="modal fade" id="enable2FAModal" tabindex="-1" aria-labelledby="enable2FAModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="{{ path('enable_2fa') }}">
 
+                    <div class="modal-header">
+                            <h5 class="modal-title" id="enable2FAModalLabel">{{ 'twig.main.modal.title' | trans }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label= {{ 'twig.main.modal.button.close' | trans }}></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{ 'twig.main.modal.body' | trans }}</p>
+                            <label>
+                                <input type="password" id="password" name="password" class="form-control" required>
+                            </label>
+                            <label>
+                                <input type="hidden" id="id" name="id" class="form-control" value="{{ app.user.id }}">
+                            </label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'twig.main.modal.button.cancel' | trans }}</button>
+                            <button type="submit" class="btn btn-success">{{ 'twig.main.enable_two_factor' | trans }}</button>
+                        </div>
+                        <input type="hidden" name="_token" value="{{ csrf_token('enable_2fa') }}">
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="disable2FAModal" tabindex="-1" aria-labelledby="disable2FAModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    {% set formAction = app.user.totpAuthenticationEnabled ? path('disable_2fa') : path('enable_2fa') %}
-                    <form method="post" action="{{ formAction }}">
+                    <form method="post" action="{{ path('disable_2fa') }}">
 
-                    <div class="modal-header">
+                        <div class="modal-header">
                             <h5 class="modal-title" id="disable2FAModalLabel">{{ 'twig.main.modal.title' | trans }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label= {{ 'twig.main.modal.button.close' | trans }}></button>
                         </div>
@@ -58,9 +83,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'twig.main.modal.button.cancel' | trans }}</button>
-                            {% set buttonClass = app.user.totpAuthenticationEnabled ? 'btn-danger' : 'btn-success' %}
-                            {% set buttonText = app.user.totpAuthenticationEnabled ? 'twig.main.disable_two_factor' | trans : 'twig.main.enable_two_factor' | trans %}
-                            <button type="submit" class="btn {{ buttonClass }}">{{ buttonText }}</button>
+                            <button type="submit" class="btn btn-danger">{{ 'twig.main.disable_two_factor' | trans }}</button>
                         </div>
                         <input type="hidden" name="_token" value="{{ csrf_token('disable_2fa') }}">
                     </form>
