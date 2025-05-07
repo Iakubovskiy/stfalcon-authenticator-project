@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'twig.edit_page.title' | trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'twig.edit_page.title' | trans }}</h1>
+    <img src="{{ getPhotoUrl() }}"
+         alt="{{ 'twig.edit_page.photo_text' | trans }}"
+         style="max-width: 700px; height: auto; border-radius: 15px; margin-top: 10px;">
+    <form action="{{ path('editUser', { id: user.id }) }}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="email">Email:</label>
+            {% set emailError = null %}
+            {% for error in errors ?? [] %}
+                {% if error.propertyPath == 'email' %}
+                    {% set emailError = error %}
+                {% endif %}
+            {% endfor %}
+
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{ emailError.invalidValue?? user.email }}" required autofocus>
+
+            {% if emailError %}
+                <div class="alert alert-danger" role="alert">
+                    {{ emailError.message }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <div>
+            <label for="password">{{ 'twig.edit_page.new_password' | trans }}</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div>
+            <label for="profile_picture">{{ 'twig.edit_page.photo_text' | trans }}</label>
+            <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-success w-auto mt-4">{{ 'twig.edit_page.save' | trans }}</button>
+        <a class="btn btn-secondary w-auto mt-4" href="{{path ('main') }}">{{ 'twig.edit_page.go_back' | trans }}</a>
+    </form>
+{% endblock %}

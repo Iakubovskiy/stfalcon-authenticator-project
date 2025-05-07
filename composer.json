@@ -6,23 +6,37 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.3.19",
+        "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/dbal": "^3",
+        "ext-sodium": "*",
+        "doctrine/dbal": "^3.9.4",
         "doctrine/doctrine-bundle": "^2.14",
-        "doctrine/doctrine-migrations-bundle": "^3.4",
-        "doctrine/orm": "^3.3",
-        "egulias/email-validator": "^4.0",
-        "nelmio/api-doc-bundle": "^5.0",
+        "doctrine/doctrine-migrations-bundle": "^3.4.1",
+        "doctrine/orm": "^3.3.2",
+        "egulias/email-validator": "^4.0.4",
+        "endroid/qr-code": "^6.0.7",
+        "league/flysystem-bundle": "^3.4",
+        "league/flysystem-local": "^3.29",
+        "nelmio/api-doc-bundle": "^5.0.1",
+        "nesbot/carbon": "^3.9",
         "runtime/frankenphp-symfony": "^0.2.0",
+        "scheb/2fa-bundle": "^7.7.1",
+        "scheb/2fa-totp": "^7.7.1",
+        "spomky-labs/otphp": "^11.3",
+        "symfony/asset": "7.2.*",
+        "symfony/clock": "7.2.*",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.5",
         "symfony/framework-bundle": "7.2.*",
         "symfony/http-client": "7.2.*",
+        "symfony/lock": "7.2.*",
+        "symfony/mime": "7.2.*",
+        "symfony/rate-limiter": "7.2.*",
         "symfony/runtime": "7.2.*",
         "symfony/security-bundle": "7.2.*",
+        "symfony/translation": "7.2.*",
         "symfony/twig-bundle": "7.2.*",
         "symfony/uid": "7.2.*",
         "symfony/validator": "7.2.*",
@@ -67,7 +81,29 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "app:recreate-database": [
+            "bin/console doctrine:database:create --if-not-exists",
+            "bin/console doctrine:migrations:migrate --no-interaction first",
+            "bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration",
+            "bin/console doctrine:fixtures:load --no-interaction",
+            "bin/console doctrine:schema:validate",
+            "echo DONE @no_additional_args"
+        ],
+        "ci:pack": [
+            "@ci:ecs",
+            "@ci:rector",
+            "@ci:phpstan",
+            "@ci:test"
+        ],
+        "ci:ecs": "vendor/bin/ecs",
+        "ci:ecs-fix": "vendor/bin/ecs --fix",
+        "ci:rector": "vendor/bin/rector",
+        "ci:rector-dry": "vendor/bin/rector --dry-run",
+        "ci:phpstan": "vendor/bin/phpstan",
+        "ci:test": "vendor/bin/phpunit",
+        "ci:cache-clear": "bin/console cache:clear"
+
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -80,6 +116,17 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.62"
+        "dama/doctrine-test-bundle": "^8.3",
+        "doctrine/doctrine-fixtures-bundle": "^4.1",
+        "phpstan/phpstan": "^2.1.12",
+        "phpunit/phpunit": "^12.1.2",
+        "rector/rector": "^2.0.11",
+        "symfony/browser-kit": "7.2.*",
+        "symfony/css-selector": "7.2.*",
+        "symfony/maker-bundle": "^1.62.1",
+        "symfony/phpunit-bridge": "^7.2",
+        "symfony/stopwatch": "7.2.*",
+        "symfony/web-profiler-bundle": "7.2.*",
+        "symplify/easy-coding-standard": "^12.5.11"
     }
 }

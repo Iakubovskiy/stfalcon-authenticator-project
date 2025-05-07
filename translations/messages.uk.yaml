@@ -1,0 +1,61 @@
+errors:
+    passwords_do_not_match: Паролі не збігаються.
+    wrong_password: Неправильний пароль. Спробуйте ще раз.
+    log_out: Цей метод може бути пустим - він буде перехоблений logout key на вашому firewall.
+    user_not_found: User not found.
+    to_many_attempts: Забагато спроб. Спробуйте пізніше.
+    ip_not_found: IP not found
+    not_unique_email: not unique email
+    not_valid_email: The email '{{ value }}' is not a valid email.
+success:
+    update: Успішно оновлено
+    register: Реєстрація успішна. Увійдіть у свій акаунт.
+    two_factor_on: Двофакторна автентифікація ввімкнена.
+warning:
+    two_factor_off: Двофакторна автентифікація вимкнена.
+qr:
+    qr_label: QR код для автентифікаторів
+twig:
+    main:
+        title: Профіль користувача
+        is_two_factor_enabled: '2FA Увімкнено:'
+        yes: Так
+        no: Ні
+        enable_two_factor: Ввімкнути 2FA
+        disable_two_factor: Вимкнути 2FA
+        no_last_login: No last login
+        last_login: Останній вхід
+        logout: Logout
+        qr_text: QR-код для автентифікатора
+        modal:
+            title: Підтвердження пароля
+            body: 'Для вимкнення двофакторної автентифікації введіть свій пароль:'
+            button: 
+                close: Закрити
+                cancel: Скасувати
+    confirm: Підтвердити
+    login_form:
+        title: Log in
+        user_title: Будь ласка увійдіть в систему
+        password: Пароль
+        sign_in: Увійти
+        do_not_have_account:
+            text: Ще не маєш акаунт?
+            register: Зареєструватися
+    register_form:
+        title: Реєстрація
+        password: Пароль
+        password_confirmation: Підтвердження паролю
+        register: Зареєструватися
+        have_an_account:
+            text: Вже маєш акаунт?
+            login: Увійти
+    edit_page:
+        title: Редагування користувача
+        photo_text: Фото профілю
+        new_password: Новий пароль
+        save: Зберегти
+        go_back: Повернутися
+        
+    two_fa_login: 
+        enter_code: 'Введіть код:'

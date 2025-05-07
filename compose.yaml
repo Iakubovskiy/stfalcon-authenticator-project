@@ -2,23 +2,32 @@ services:
   php:
     image: ${IMAGES_PREFIX:-}app-php
     restart: unless-stopped
+    build:
+        context: .
+        target: frankenphp_dev
+    volumes:
+        - ./:/app
+        - ./docker-configs/php.ini:/usr/local/etc/php/conf.d/app-php.ini
+        - ./frankenphp/conf.d/20-app.dev.ini:/usr/local/etc/php/app.conf.d/20-app.dev.ini:ro
+        # If you develop on Mac or Windows you can remove the vendor/ directory
+        #  from the bind-mount for better performance by enabling the next line:
+        #- /app/vendor
     environment:
-      # Run "composer require symfony/orm-pack" to install and configure Doctrine ORM
-      DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-123}@database:5432/${POSTGRES_DB:-app}?serverVersion=${POSTGRES_VERSION:-16}&charset=${POSTGRES_CHARSET:-utf8}
-      # The two next lines can be removed after initial installation
-      SYMFONY_VERSION: ${SYMFONY_VERSION:-}
-      STABILITY: ${STABILITY:-stable}
+        XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+        APP_ENV: "${APP_ENV:-dev}"
+    extra_hosts:
+        # Ensure that host.docker.internal is correctly defined on Linux
+        - host.docker.internal:host-gateway
+    tty: true
     ports:
       # HTTP
       - "8000:8000"
     command: php -S 0.0.0.0:8000 -t public
   
-  ###> doctrine/doctrine-bundle ###
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123}
       POSTGRES_USER: ${POSTGRES_USER:-app}
     healthcheck:
@@ -28,11 +37,8 @@ services:
       start_period: 60s
     volumes:
       - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+    ports:
+      - "5432:5432"
 
 volumes:
-  ###> doctrine/doctrine-bundle ###
   database_data:
-###< doctrine/doctrine-bundle ###

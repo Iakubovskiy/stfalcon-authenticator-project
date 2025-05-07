@@ -1,7 +1,8 @@
 #syntax=docker/dockerfile:1
 
 # Versions
-FROM dunglas/frankenphp:1-php8.3 AS frankenphp_upstream
+# for future: use roadrunner
+FROM dunglas/frankenphp:1-php8.4-bookworm AS frankenphp_upstream
 
 # The different stages of this Dockerfile are meant to be built into separate images
 # https://docs.docker.com/develop/develop-images/multistage-build/#stop-at-a-specific-build-stage
@@ -23,6 +24,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	gettext \
 	git \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y \
+    libfreetype6-dev \
+    libjpeg-dev \
+    libpng-dev \
+    && docker-php-ext-configure gd --with-freetype \
+    && docker-php-ext-install -j$(nproc) gd
 
 RUN set -eux; \
 	install-php-extensions \

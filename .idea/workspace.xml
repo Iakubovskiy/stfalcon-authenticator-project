@@ -4,23 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/AuthPageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/UserActions/LoginAction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/UserActions/RegisterAction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DTO/RegisterDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presenters/UserPresenter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/UserService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/auth/register.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="signed url for profile photo with eat implemented">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/GetPhotoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/Photo/GetPhotoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
@@ -34,47 +33,223 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/dunglas/symfony-docker&quot;,
+    &quot;url&quot;: &quot;https://github.com/Iakubovskiy/stfalcon-authenticator-project&quot;,
     &quot;accountId&quot;: &quot;59b542b9-99b5-4769-b596-62bd084c5217&quot;
-  }
+  },
+  &quot;editorReviewEnabled&quot;: false
 }</component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/scheb/2fa-bundle" />
+      <path value="$PROJECT_DIR$/vendor/spomky-labs/otphp" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/endroid/qr-code" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/api-doc-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/scheb/2fa-totp" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/rate-limiter" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/runtime/frankenphp-symfony" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/lock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/symfony/type-info" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php84" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symplify/easy-coding-standard" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/vendor/rector/rector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/staabm/side-effects-detector" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-bundle" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+    </include_path>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2vROs9U8bffxkM5lHxQEMpBnSJ0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/admin/Desktop/Stfalcon/authenticator-project/src/Controller/UserActions",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;PHPUnit.TwoFactorTest.testQrEndpointNotSingedUrl.executor&quot;: &quot;Run&quot;,
+    &quot;PHPUnit.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;PHPUnit.UpdateEndpointTest.executor&quot;: &quot;Run&quot;,
+    &quot;PHPUnit.UpdateEndpointTest.testEditionOfAnotherUserIsProhibited.executor&quot;: &quot;Run&quot;,
+    &quot;PHPUnit.UpdateEndpointTest.testEmailUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm&quot;: &quot;Docker Compose&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm&quot;: &quot;Docker Compose&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Desktop/Stfalcon/authenticator-project/src/User/Email/Tests&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PHP&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/User/Email/Tests" />
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/templates/auth" />
       <recent name="$PROJECT_DIR$/src/Controller/UserActions" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/User" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/web" />
-      <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
+      <CommandLine>
+        <PhpTestInterpreterSettings>
+          <option name="interpreterName" value="php" />
+        </PhpTestInterpreterSettings>
+      </CommandLine>
+      <TestRunner configuration_file="/app/phpunit.dist.xml" directory="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -92,11 +267,366 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744104623361</updated>
-      <workItem from="1744104624394" duration="21014000" />
+      <workItem from="1744104624394" duration="79130000" />
+      <workItem from="1744708380496" duration="12959000" />
+      <workItem from="1744722398872" duration="2307000" />
+      <workItem from="1744727047489" duration="16240000" />
+      <workItem from="1744894188328" duration="43693000" />
+      <workItem from="1745106790721" duration="2085000" />
+      <workItem from="1745269776084" duration="3361000" />
+      <workItem from="1745395287140" duration="1155000" />
+      <workItem from="1745396448321" duration="41637000" />
+      <workItem from="1745832677756" duration="30297000" />
+      <workItem from="1746017099970" duration="2617000" />
+      <workItem from="1746086568051" duration="1773000" />
+      <workItem from="1746102884699" duration="2311000" />
+      <workItem from="1746360628190" duration="44539000" />
+      <workItem from="1746613665997" duration="3596000" />
+      <workItem from="1746618763291" duration="9950000" />
     </task>
+    <task id="LOCAL-00001" summary="initial + login and register">
+      <option name="closed" value="true" />
+      <created>1744185030122</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744185030122</updated>
+    </task>
+    <task id="LOCAL-00002" summary="login + 2 factor">
+      <option name="closed" value="true" />
+      <created>1744275089178</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744275089178</updated>
+    </task>
+    <task id="LOCAL-00003" summary="QR code generated">
+      <option name="closed" value="true" />
+      <created>1744297057609</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744297057609</updated>
+    </task>
+    <task id="LOCAL-00004" summary="last login + rate limit">
+      <option name="closed" value="true" />
+      <created>1744305161687</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1744305161687</updated>
+    </task>
+    <task id="LOCAL-00005" summary="secret encryption">
+      <option name="closed" value="true" />
+      <created>1744370704242</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744370704242</updated>
+    </task>
+    <task id="LOCAL-00006" summary="standards met and changes made">
+      <option name="closed" value="true" />
+      <created>1744746166311</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1744746166311</updated>
+    </task>
+    <task id="LOCAL-00007" summary="unit validation test">
+      <option name="closed" value="true" />
+      <created>1744806940269</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744806940269</updated>
+    </task>
+    <task id="LOCAL-00008" summary="integration validation test and application test for api&#10;also quality tools applied">
+      <option name="closed" value="true" />
+      <created>1744815401119</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744815401119</updated>
+    </task>
+    <task id="LOCAL-00009" summary="uri signer implemented">
+      <option name="closed" value="true" />
+      <created>1744821227988</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744821227988</updated>
+    </task>
+    <task id="LOCAL-00010" summary="quality tools used">
+      <option name="closed" value="true" />
+      <created>1744821663128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744821663128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="docker compose configuration corrected">
+      <option name="closed" value="true" />
+      <created>1744903810052</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744903810052</updated>
+    </task>
+    <task id="LOCAL-00012" summary="constants used">
+      <option name="closed" value="true" />
+      <created>1744903951811</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744903951811</updated>
+    </task>
+    <task id="LOCAL-00013" summary="custom validation + UserService.php corrected">
+      <option name="closed" value="true" />
+      <created>1744911456879</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744911456879</updated>
+    </task>
+    <task id="LOCAL-00014" summary="main controller added">
+      <option name="closed" value="true" />
+      <created>1744964894563</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744964894563</updated>
+    </task>
+    <task id="LOCAL-00015" summary="AsEventListener added and TwoFactorRateLimiter autowired">
+      <option name="closed" value="true" />
+      <created>1744967041286</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1744967041286</updated>
+    </task>
+    <task id="LOCAL-00016" summary="composer scripts + tests modified and logic and validator fixed">
+      <option name="closed" value="true" />
+      <created>1745052307182</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1745052307182</updated>
+    </task>
+    <task id="LOCAL-00017" summary="translator used">
+      <option name="closed" value="true" />
+      <created>1745058299166</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1745058299166</updated>
+    </task>
+    <task id="LOCAL-00018" summary="user entity refactored, twig templates changed, validator corrected">
+      <option name="closed" value="true" />
+      <created>1745060208608</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1745060208608</updated>
+    </task>
+    <task id="LOCAL-00019" summary="quality tools used and tests fixed">
+      <option name="closed" value="true" />
+      <created>1745065590449</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1745065590449</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fixture created and tests are running successfully">
+      <option name="closed" value="true" />
+      <created>1745272808439</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1745272808439</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fixture created and tests are running successfully">
+      <option name="closed" value="true" />
+      <created>1745272815506</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1745272815506</updated>
+    </task>
+    <task id="LOCAL-00022" summary="some changes from review">
+      <option name="closed" value="true" />
+      <created>1745399829643</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1745399829643</updated>
+    </task>
+    <task id="LOCAL-00023" summary="email value object created">
+      <option name="closed" value="true" />
+      <created>1745506436220</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1745506436220</updated>
+    </task>
+    <task id="LOCAL-00024" summary="test to almost all endpoints">
+      <option name="closed" value="true" />
+      <created>1745579585847</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1745579585847</updated>
+    </task>
+    <task id="LOCAL-00025" summary="code coverage added + quality tools used">
+      <option name="closed" value="true" />
+      <created>1745580588800</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1745580588800</updated>
+    </task>
+    <task id="LOCAL-00026" summary="added expired at for qr + and some bugs fixed as well as scripts for database recreation">
+      <option name="closed" value="true" />
+      <created>1745842262758</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1745842262759</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used">
+      <option name="closed" value="true" />
+      <created>1745842313896</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1745842313896</updated>
+    </task>
+    <task id="LOCAL-00028" summary="not necessary migrations deleted, new tests added, updateUserService was split">
+      <option name="closed" value="true" />
+      <created>1745917750316</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1745917750316</updated>
+    </task>
+    <task id="LOCAL-00029" summary="tried to change structure">
+      <option name="closed" value="true" />
+      <created>1745926269252</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1745926269252</updated>
+    </task>
+    <task id="LOCAL-00030" summary="structure changed, some files are named properly">
+      <option name="closed" value="true" />
+      <created>1745933435762</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1745933435762</updated>
+    </task>
+    <task id="LOCAL-00031" summary="login endpoint test added">
+      <option name="closed" value="true" />
+      <created>1745934800319</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1745934800319</updated>
+    </task>
+    <task id="LOCAL-00032" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1746018959923</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746018959923</updated>
+    </task>
+    <task id="LOCAL-00033" summary="secret key type added">
+      <option name="closed" value="true" />
+      <created>1746368702089</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1746368702089</updated>
+    </task>
+    <task id="LOCAL-00034" summary="lazy Ghost added and comments in code cleared">
+      <option name="closed" value="true" />
+      <created>1746465513996</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1746465513996</updated>
+    </task>
+    <task id="LOCAL-00035" summary="null check instead of is instance of, comments in yaml returned, templates changed">
+      <option name="closed" value="true" />
+      <created>1746532707822</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1746532707822</updated>
+    </task>
+    <task id="LOCAL-00036" summary="file is saving via flysystem, public(for now) url for user photo">
+      <option name="closed" value="true" />
+      <created>1746624995581</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1746624995581</updated>
+    </task>
+    <task id="LOCAL-00037" summary="signed url for profile photo with eat implemented">
+      <option name="closed" value="true" />
+      <created>1746625788161</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746625788161</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="constants used" />
+    <MESSAGE value="custom validation + UserService.php corrected" />
+    <MESSAGE value="main controller added" />
+    <MESSAGE value="AsEventListener added and TwoFactorRateLimiter autowired" />
+    <MESSAGE value="composer scripts + tests modified and logic and validator fixed" />
+    <MESSAGE value="translator used" />
+    <MESSAGE value="user entity refactored, twig templates changed, validator corrected" />
+    <MESSAGE value="quality tools used and tests fixed" />
+    <MESSAGE value="fixture created and tests are running successfully" />
+    <MESSAGE value="some changes from review" />
+    <MESSAGE value="email value object created" />
+    <MESSAGE value="test to almost all endpoints" />
+    <MESSAGE value="code coverage added + quality tools used" />
+    <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation" />
+    <MESSAGE value="added expired at for qr + and some bugs fixed as well as scripts for database recreation + quality tools used" />
+    <MESSAGE value="not necessary migrations deleted, new tests added, updateUserService was split" />
+    <MESSAGE value="tried to change structure" />
+    <MESSAGE value="structure changed, some files are named properly" />
+    <MESSAGE value="login endpoint test added" />
+    <MESSAGE value="some changes" />
+    <MESSAGE value="secret key type added" />
+    <MESSAGE value="lazy Ghost added and comments in code cleared" />
+    <MESSAGE value="null check instead of is instance of, comments in yaml returned, templates changed" />
+    <MESSAGE value="file is saving via flysystem, public(for now) url for user photo" />
+    <MESSAGE value="signed url for profile photo with eat implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="signed url for profile photo with eat implemented" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
