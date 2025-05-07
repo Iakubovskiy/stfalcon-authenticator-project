@@ -26,6 +26,7 @@ twig:
         no_last_login: No last login
         last_login: Останній вхід
         logout: Logout
+        qr_text: QR-код для автентифікатора
         modal:
             title: Підтвердження пароля
             body: 'Для вимкнення двофакторної автентифікації введіть свій пароль:'

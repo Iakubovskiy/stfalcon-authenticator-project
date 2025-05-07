@@ -5,11 +5,15 @@ declare(strict_types=1);
 namespace App\User\Profile\UseCases\Edit;
 
 use App\User\Support\UserRepository;
+use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Uid\Uuid;
@@ -23,6 +27,9 @@ class ProfileEditController extends AbstractController
         private readonly ProfileEditService $updateUserService,
         private readonly FileService $fileService,
         private readonly TranslatorInterface $translator,
+        private readonly ClockInterface $clock,
+        private readonly UriSigner $uriSigner,
+        private readonly UrlGeneratorInterface $urlGenerator,
     ) {
     }
 
@@ -30,8 +37,18 @@ class ProfileEditController extends AbstractController
     public function edit(#[CurrentUser] UserInterface $currentUser): Response
     {
         $user = $this->userRepository->getUserById(Uuid::fromString($currentUser->getUserIdentifier()));
+        $expireAt = $this->clock->now()->add(new DateInterval('PT10M'))->getTimestamp();
+        $photoRawUrl = $this->urlGenerator->generate(
+            'user_photo',
+            [
+                'eat' => $expireAt,
+            ],
+            referenceType: UrlGeneratorInterface::ABSOLUTE_URL
+        );
+        $photoUrl = $this->uriSigner->sign($photoRawUrl);
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
+            'photoUrl' => $photoUrl,
         ]);
     }
 

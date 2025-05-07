@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>{{ 'twig.edit_page.title' | trans }}</h1>
-    <img src="{{ path('user_photo') }}"
+    <img src="{{ photoUrl }}"
          alt="{{ 'twig.edit_page.photo_text' | trans }}"
          style="max-width: 700px; height: auto; border-radius: 15px; margin-top: 10px;">
     <form action="{{ path('editUser', { id: user.id }) }}" method="post" enctype="multipart/form-data">

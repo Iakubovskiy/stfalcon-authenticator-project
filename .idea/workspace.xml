@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/rate_limiter.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/rate_limiter.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Subscripers/TwoFactorRateLimitSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UseCases/Login/TwoFactorLogin/Subscribers/TwoFactorRateLimitSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit/edit.html.twig" afterDir="false" />
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="file is saving via flysystem, public(for now) url for user photo">
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/GetPhotoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/GetPhotoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.uk.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.uk.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +279,7 @@
       <workItem from="1746102884699" duration="2311000" />
       <workItem from="1746360628190" duration="44539000" />
       <workItem from="1746613665997" duration="3596000" />
-      <workItem from="1746618763291" duration="5394000" />
+      <workItem from="1746618763291" duration="6265000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -568,7 +561,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746532707822</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="file is saving via flysystem, public(for now) url for user photo">
+      <option name="closed" value="true" />
+      <created>1746624995581</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1746624995581</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="quality tools used" />
     <MESSAGE value="docker compose configuration corrected" />
     <MESSAGE value="constants used" />
     <MESSAGE value="custom validation + UserService.php corrected" />
@@ -611,7 +611,8 @@
     <MESSAGE value="secret key type added" />
     <MESSAGE value="lazy Ghost added and comments in code cleared" />
     <MESSAGE value="null check instead of is instance of, comments in yaml returned, templates changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="null check instead of is instance of, comments in yaml returned, templates changed" />
+    <MESSAGE value="file is saving via flysystem, public(for now) url for user photo" />
+    <option name="LAST_COMMIT_MESSAGE" value="file is saving via flysystem, public(for now) url for user photo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
