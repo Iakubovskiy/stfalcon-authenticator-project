@@ -41,20 +41,10 @@ class ProfilePageController extends AbstractController
         );
         $signedQrUrl = $this->uriSigner->sign($qrCodeUrl);
 
-        $photoRawUrl = $this->urlGenerator->generate(
-            'user_photo',
-            [
-                'eat' => $expireAt,
-            ],
-            referenceType: UrlGeneratorInterface::ABSOLUTE_URL
-        );
-        $photoUrl = $this->uriSigner->sign($photoRawUrl);
-
         return $this->render(
             'main.html.twig',
             [
                 'qrUrl' => $signedQrUrl,
-                'photoUrl' => $photoUrl,
             ]
         );
     }

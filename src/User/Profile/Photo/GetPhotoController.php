@@ -2,9 +2,8 @@
 declare(strict_types=1);
 
 
-namespace App\User\Profile\UseCases;
+namespace App\User\Profile\Photo;
 
-use App\User\Profile\UseCases\Edit\FileService;
 use App\User\Support\UserRepository;
 use Carbon\CarbonImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +20,7 @@ use Symfony\Component\Uid\Uuid;
 class GetPhotoController extends AbstractController
 {
     public function __construct(
-        private readonly FileService $fileService,
+        private readonly GetFileService $fileService,
         private readonly UserRepository $userRepository,
         private readonly ClockInterface $clock,
         private readonly UriSigner $uriSigner,

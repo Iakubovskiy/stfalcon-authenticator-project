@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="file is saving via flysystem, public(for now) url for user photo">
+    <list default="true" id="8b0617a7-d87c-4242-9566-a6859365d534" name="Changes" comment="signed url for profile photo with eat implemented">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/FileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Edit/ProfileEditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/Get/ProfilePageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/GetPhotoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/UseCases/GetPhotoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Profile/UseCases/GetPhotoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Profile/Photo/GetPhotoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/messages.uk.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.uk.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +282,7 @@
       <workItem from="1746102884699" duration="2311000" />
       <workItem from="1746360628190" duration="44539000" />
       <workItem from="1746613665997" duration="3596000" />
-      <workItem from="1746618763291" duration="6265000" />
+      <workItem from="1746618763291" duration="9950000" />
     </task>
     <task id="LOCAL-00001" summary="initial + login and register">
       <option name="closed" value="true" />
@@ -569,7 +572,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746624995581</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="signed url for profile photo with eat implemented">
+      <option name="closed" value="true" />
+      <created>1746625788161</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746625788161</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +598,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docker compose configuration corrected" />
     <MESSAGE value="constants used" />
     <MESSAGE value="custom validation + UserService.php corrected" />
     <MESSAGE value="main controller added" />
@@ -612,7 +622,8 @@
     <MESSAGE value="lazy Ghost added and comments in code cleared" />
     <MESSAGE value="null check instead of is instance of, comments in yaml returned, templates changed" />
     <MESSAGE value="file is saving via flysystem, public(for now) url for user photo" />
-    <option name="LAST_COMMIT_MESSAGE" value="file is saving via flysystem, public(for now) url for user photo" />
+    <MESSAGE value="signed url for profile photo with eat implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="signed url for profile photo with eat implemented" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

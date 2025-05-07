@@ -37,18 +37,9 @@ class ProfileEditController extends AbstractController
     public function edit(#[CurrentUser] UserInterface $currentUser): Response
     {
         $user = $this->userRepository->getUserById(Uuid::fromString($currentUser->getUserIdentifier()));
-        $expireAt = $this->clock->now()->add(new DateInterval('PT10M'))->getTimestamp();
-        $photoRawUrl = $this->urlGenerator->generate(
-            'user_photo',
-            [
-                'eat' => $expireAt,
-            ],
-            referenceType: UrlGeneratorInterface::ABSOLUTE_URL
-        );
-        $photoUrl = $this->uriSigner->sign($photoRawUrl);
+
         return $this->render('edit/edit.html.twig', [
             'user' => $user,
-            'photoUrl' => $photoUrl,
         ]);
     }
 
