@@ -1,3 +1,5 @@
+imports:
+    - { resource: './packages/flysystem.yaml' }
 parameters:
     profile_pictures_directory: '%kernel.project_dir%/public/uploads'
 

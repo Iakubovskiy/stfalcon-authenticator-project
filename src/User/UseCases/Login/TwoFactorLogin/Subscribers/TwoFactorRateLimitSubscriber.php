@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\User\UseCases\Login\TwoFactorLogin\Subscripers;
+namespace App\User\UseCases\Login\TwoFactorLogin\Subscribers;
 
 use RuntimeException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
+use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsEventListener(event: RequestEvent::class, method: 'onRequest')]
+#[AsEventListener(event: RequestEvent::class, method: 'onRequest', priority: 8)]
 readonly class TwoFactorRateLimitSubscriber
 {
     public function __construct(
@@ -25,7 +26,8 @@ readonly class TwoFactorRateLimitSubscriber
     public function onRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
-        if ($request->getPathInfo() !== '/2fa_check' || ! $request->isMethod('POST')) {
+
+        if ($request->attributes->get('_route') !== '2fa_login_check' || ! $request->isMethod('POST')) {
             return;
         }
 

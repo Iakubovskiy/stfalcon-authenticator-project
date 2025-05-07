@@ -16,6 +16,8 @@
         "doctrine/orm": "^3.3.2",
         "egulias/email-validator": "^4.0.4",
         "endroid/qr-code": "^6.0.7",
+        "league/flysystem-bundle": "^3.4",
+        "league/flysystem-local": "^3.29",
         "nelmio/api-doc-bundle": "^5.0.1",
         "nesbot/carbon": "^3.9",
         "runtime/frankenphp-symfony": "^0.2.0",
